@@ -10,63 +10,50 @@ body {
   -ms-user-select: none;
   user-select: none;
 }
-.content-wrapper {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 50px;
-  bottom: 0;
-  overflow-y: auto;
-}
 /*****************NAV*******************/
 .bottom-bar {
   position: fixed;
   top: 0px;
   width: 100%;
   height: 50px;
-  background-color: #2ecc71;
+  background-color: #856fd7;
 }
 .bottom-statistics {
   position: fixed;
   bottom: 0px;
   width: 100%;
   height: 90px;
-  background-color: #2ecc71;
+  background-color: #856fd7;
 }
 .button,
-.button-noclick {
+.button-noclick,
+.nav-title {
   display: inline-block;
   vertical-align: text-top;
   float: left;
 }
 .bottom-bar .down:hover {
-  background-color: #008709 !important;
+  background-color: #1a219e !important;
 }
 .down {
-  background-color: #008709;
+  background-color: #1a219e;
 }
 .bottom-bar .button:hover {
-  background-color: #74d992;
+  background-color: #90a9ec;
   cursor: pointer;
 }
-#play-bottom-bar {
-  height: 50px;
-  font-size: larger;
-  font-weight: bold;
-}
-.container.card-container {
-  padding: 10px;
-  margin-right: 5px;
-  margin-left: 5px;
-  margin-bottom: 5px;
-  overflow-y: scroll;
-  white-space: nowrap;
+.nav-title {
+  line-height: 50px;
+  font-size: 18px;
+  padding-right: 20px;
+  color: white;
 }
 .icon {
   height: 35px;
   margin: 7.5px;
 }
 .icon-brand {
+  margin-left: 15px;
   height: 50px;
 }
 .navbar,
@@ -451,23 +438,42 @@ body {
   }
 }
 /***************ROUND END*********************/
+.content-wrapper {
+  position: fixed;
+  left: 0px;
+  top: 50px;
+  right: 0px;
+  bottom: 90px;
+  overflow-y: auto;
+  background-color: #E4E4E4;
+}
+.card-container {
+  padding: 10px;
+  margin-right: 5px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+}
 .card {
-  background: #aaaaaa;
-  padding: 1%;
+  background: white;
+  padding: 10px;
   width: 30%;
+  margin: 6%;
   display: inline-block;
   position: relative;
-  margin: 7%;
 }
 .card img {
   width: 100%;
   height: auto;
 }
 .card-caption {
-  padding: 5px;
+  padding: 0;
   position: absolute;
   bottom: 0;
+  left: 0;
+  right: 0;
+  height: 25%;
   color: #FAFAFA;
+  background: #aaaaaa;
 }
 .profile {
   height: 60px;
@@ -480,6 +486,12 @@ body {
   padding: 7.5px;
 }
 .bottom-statistics .button:hover {
-  background-color: #74d992;
+  background-color: #90a9ec;
   cursor: pointer;
+}
+.stat-header {
+  color: #FAFAFA;
+  margin-left: 5px;
+  padding: 10px;
+  font-size: 30px;
 }

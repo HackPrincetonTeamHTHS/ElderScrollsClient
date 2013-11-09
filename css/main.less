@@ -1,4 +1,4 @@
-@main-color: #4575d4;
+@main-color: #856FD7;
 @main-highlight-color: #90a9ec;
 @main-button-press: #1a219e;
 @secondary-color: #FAFAFA;
@@ -53,14 +53,6 @@ body {
   font-size: 18px;;
   padding-right: 20px;
   color: white;
-}
-.container.card-container{
-  padding: 10px;
-  margin-right: 5px;
-  margin-left: 5px;
-  margin-bottom: 5px;
-  overflow-x: scroll;
-  white-space: nowrap;
 }
 .icon {
   height: 35px;
@@ -511,19 +503,42 @@ body {
 }
 
 /***************ROUND END*********************/
+.content-wrapper {
+  position: fixed;
+  left: 0px;
+  top: 50px;
+  right: 0px;
+  bottom: 90px;
+  overflow-y: auto;
+  background-color: #E4E4E4;
+}
+.card-container{
+  padding: 10px;
+  margin-right: 5px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+}
 .card {
-  background: #000000;
-  padding: 5px;
-  width: 150px;
-  height: 225px;
+  background: white;
+  padding: 10px;
+  width: 30%;
+  margin:6%;
   display: inline-block;
   position: relative;
 }
+.card img {
+  width: 100%;
+  height: auto;
+}
 .card-caption {
-  padding: 5px;
+  padding:0;
   position: absolute;
   bottom: 0;
+  left: 0;
+  right: 0;
+  height: 25%;
   color: #FAFAFA;
+  background:#aaaaaa;
 }
 .profile {
   height: 60px;
@@ -540,4 +555,10 @@ body {
   cursor: pointer;
 }
 
+.stat-header {
+  color: #FAFAFA;
+  margin-left: 5px;
+  padding: 10px;
+  font-size: 30px;
 
+}
