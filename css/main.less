@@ -4,6 +4,7 @@
 body {
   color: #333333;
   font-family: 'Roboto', sans-serif;
+  overflow:hidden;
 }
 .bottom-bar {
   position: fixed;
@@ -28,4 +29,55 @@ body {
 
 .bottom-bar .button:hover {
   background-color: @main-highlight-color;
+  cursor: pointer;
+}
+
+#canvas-wrapper {
+  margin: auto;
+  position: relative;
+}
+#canvas-wrapper:before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+#canvas-content {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  bottom: 10px;
+  right: 10px;
+  background-color: white;
+}
+#play-content-wrapper {
+  position: fixed;
+  bottom: 45px;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+}
+.pane {
+  width: 100%;
+}
+#stat-pane {
+  height: 25%;
+}
+#canvas-pane {
+  height: 75%;
+  background-color: #e7e7e7;
+}
+
+@media (min-width: 767px) {
+  #stat-pane {
+    display: inline-block;
+    height: 100%;
+    width: 30%;
+    float: left;
+  }
+  #canvas-pane {
+    display: inline-block;
+    height: 100%;
+    width: 70%;
+    float: left;
+  }
 }
