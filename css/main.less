@@ -1,8 +1,9 @@
-@main-color: #2ecc71;
-@main-highlight-color: #74d992;
-@main-button-press: #008709;
+@main-color: #4575d4;
+@main-highlight-color: #90a9ec;
+@main-button-press: #1a219e;
 @secondary-color: #FAFAFA;
 
+/*********************COMMON*************************/
 body {
   color: #333333;
   font-family: 'Roboto', sans-serif;
@@ -14,11 +15,13 @@ body {
   -ms-user-select: none;
   user-select: none;
 }
+
+/*****************NAV*******************/
 .bottom-bar {
   position: fixed;
-  bottom: 0px;
+  top: 0px;
   width: 100%;
-  height: 45px;
+  height: 50px;
   background-color: @main-color;
 }
 .bottom-statistics {
@@ -28,7 +31,7 @@ body {
   height: 90px;
   background-color: @main-color;
 }
-.button {
+.button, .button-noclick, .nav-title {
   display: inline-block;
   vertical-align:text-top;
   float: left;
@@ -39,43 +42,340 @@ body {
 .down {
   background-color: @main-button-press;
 }
-.container {
-  padding: 10px;
-  margin-right: 5px;
-  margin-left: 5px;
-  margin-bottom: 5px;
-}
-.icon {
-  height: 30px;
-  margin: 7.5px;
-}
-
-.profile {
-  height: 60px;
-}
-
-#play-bottom-bar {
-  height: 45px;
-
-  font-size: larger;
-  font-weight: bold;
-}
-#roundend-bottom-bar {
-  font-weight: bold;
-}
-
-.bottom-statistics .button {
-  height: 90px;
-  padding: 7.5px;
-}
-.bottom-statistics .button:hover {
-  background-color: @main-highlight-color;
-  cursor: pointer;
-}
 .bottom-bar .button:hover {
   background-color: @main-highlight-color;
   cursor: pointer;
 }
+#play-bottom-bar {
+}
+.nav-title {
+  line-height: 50px;
+  font-size: 18px;;
+  padding-right: 20px;
+  color: white;
+}
+.container.card-container{
+  padding: 10px;
+  margin-right: 5px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+.icon {
+  height: 35px;
+  margin: 7.5px;
+}
+.icon-brand {
+  margin-left: 15px;
+  height: 50px;
+}
+
+.navbar,
+.navbar-inverse,
+.navbar-fixed-top {
+  z-index:10;
+  min-height:50px;
+  height:50px;
+  background: #486480;
+  border:none;
+}
+
+/****************HOME********************/
+/*=shadow + sliding menu
+--------------------*/
+.collapsable#shadow {
+  position:fixed;
+  z-index:1;
+  height:100%;
+  width:100%;
+  visibility:hidden;
+
+  transition: all 0.3s ease;
+}
+
+.collapsable#shadow.collapsed {
+  background: rgba(0,0,0,0.3);
+  visibility:visible;
+}
+
+#sliding-menu {
+  position:fixed;
+  z-index:100;
+  top:50px;
+  bottom:0;
+  width:300px;
+  background:rgba(30,30,30,0.95);
+  overflow:hidden;
+
+  transition: all 0.4s ease;
+}
+
+#sliding-menu.collapsed {
+  width:0;
+}
+
+#sliding-menu * {
+  margin-left:0px;
+  white-space:nowrap;
+  transition: all 0.4s ease;
+
+}
+
+#sliding-menu.collapsed * {
+  margin-left:-100px;
+
+}
+
+@media(min-width:768px) {
+
+  .collapsable#shadow {
+    visibility:hidden!important;
+  }
+
+  #sliding-menu {
+    width:300px!important;
+
+  }
+
+  #sliding-menu * {
+    margin-left:0px!important;
+
+  }
+
+}
+
+#sliding-menu .prof-pic {
+  position:absolute;
+  top:10px;
+  left:10px;
+  height:100px;
+  width:100px;
+  border-radius:4px;
+  background:#eeeeee;
+}
+
+#sliding-menu .prof-name {
+  position:absolute;
+  top:24px;
+  left:120px;
+  color:white;
+  font-size:20px;
+  font-weight:300;
+  line-height:20px;
+}
+
+#sliding-menu .stat {
+  position:absolute;
+  left:120px;
+  color:white;
+  font-size:14px;
+  font-weight:300;
+  line-height:14px;
+}
+
+.stat#win {
+  top:54px;
+}
+
+.stat#loss {
+  top:79px;
+}
+
+.line-break {
+  position:absolute;
+  top:120px;
+  width:100%;
+  height:1px;
+  background-color:rgba(100,100,100, 0.5);
+}
+
+#options-list {
+  position:absolute;
+  bottom:0;
+  top:121px;
+  width:100%;
+  overflow-y:scroll;
+
+}
+
+#options-list > div {
+  height:60px;
+  width:300px;
+  border-bottom:1px solid rgba(100,100,100, 0.3);
+  padding-left:95px;
+  padding-top:23px;
+  font-size:14px;
+  line-height:14px;
+  color:white;
+  cursor:pointer;
+
+
+  background-size:36px 36px;
+  background-position:45px 12px ;
+  background-repeat:no-repeat;
+}
+
+#options-list > div.active {
+  background-color: rgba(255,255,255,0.3);
+}
+
+#menu-profile {
+  background-image: url("../img/ic_action_person.png");
+}
+
+#menu-watch-game {
+  background-image: url("../img/ic_action_good.png");
+}
+
+#menu-join-game {
+  background-image: url("../img/ic_action_edit.png");
+}
+
+#menu-create-game {
+  background-image: url("../img/ic_action_new.png");
+}
+
+#menu-settings {
+  background-image: url("../img/ic_action_settings.png");
+}
+
+/*=action bar
+--------------------*/
+.container.navigation {
+  height:50px;
+  width:auto!important;
+  padding:0;
+  position:absolute;
+  cursor:pointer;
+}
+
+#nav-back {
+  position:absolute;
+  display:inline;
+  border:none;
+  height:32px;
+  background: url("../img/ic_action_undo.png");
+  background-repeat:no-repeat;
+  background-size:20px 16px;
+  background-position:0px 7px;
+
+  transition: all 0.4s ease;
+}
+
+#nav-btn {
+  position:absolute;
+  display:inline;
+  border:none;
+  height:32px;
+  background: url("../img/ic_navigation_drawer.png");
+  background-repeat:no-repeat;
+  background-size:20px 16px;
+  background-position:0px 7px;
+
+  transition: all 0.4s ease;
+}
+
+#nav-btn.collapsed {
+  left:-7px;
+}
+
+@media(min-width:768px) {
+  #nav-btn {
+    left:-7px!important;
+  }
+}
+
+#navbar-icon {
+  margin-left:15px;
+  height:50px;
+  width:50px;
+  background-image:url("../img/action-bar-icon.png");
+  background-size: 50px 50px;
+  background-repeat:no-repeat;
+}
+
+.navbar-brand#username {
+  display:block;
+  font-size:18px;
+  font-family:Roboto;
+  color:white;
+  margin-left:52px;
+  margin-top:-52px;
+}
+
+/*=row stuff container > .row.descrip. > .diff , .game-info > .game-title, .round-time
+--------------------*/
+.container#main {
+  width:100%;
+}
+
+@media(min-width:768px) {
+  .container#main {
+    padding-left:315px!important;
+  }
+}
+
+.row.descrip {
+  position:relative;
+  color:#aaaaaa;
+  background-image:url("../img/ic_action_next_item.png");
+  background-size:26px 26px;
+  background-repeat:no-repeat;
+  background-position:99% 27px;
+}
+
+.row.descrip:nth-child(odd) {
+  background-color:#ededed;
+}
+
+.diff {
+  height:80px;
+  width:80px;
+  opacity:0.5;
+}
+
+.diff.easy {
+  background-color:#2ecc71;
+}
+
+.diff.medium {
+  background-color:#f1c40f;
+}
+
+.diff.hard {
+  background-color:#e74c3c;
+}
+
+.descrip .game-info {
+  position:absolute;
+  left:92px;
+  top:7px;
+}
+
+.descrip .game-title {
+  font-size:19px;
+  line-height:19px;
+  color:#797979;
+}
+
+.descrip .player-count {
+  position:absolute;
+  top:28px;
+  font-size:14px;
+  line-height:14px;
+  color:#aaaaaa;
+}
+
+.descrip .game-time {
+  position:absolute;
+  top:50px;
+  font-size:14px;
+  line-height:14px;
+  color:#aaaaaa;
+}
+
+/*****************PLAY********************/
 #canvas-wrapper {
   margin: auto;
   position: relative;
@@ -93,12 +393,25 @@ body {
   right: 10px;
   background-color: white;
 }
+#preview-content {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  bottom: 10px;
+  right: 10px;
+  display: none;
+}
+#preview {
+  width: 100%;
+  height: 100%;
+}
 #play-content-wrapper {
   position: fixed;
-  bottom: 45px;
-  top: 0px;
+  bottom: 0px;
+  top: 50px;
   left: 0px;
   right: 0px;
+  background-color: #e7e7e7;
 }
 .pane {
   width: 100%;
@@ -197,5 +510,34 @@ body {
   }
 }
 
+/***************ROUND END*********************/
+.card {
+  background: #000000;
+  padding: 5px;
+  width: 150px;
+  height: 225px;
+  display: inline-block;
+  position: relative;
+}
+.card-caption {
+  padding: 5px;
+  position: absolute;
+  bottom: 0;
+  color: #FAFAFA;
+}
+.profile {
+  height: 60px;
+}
+#roundend-bottom-bar {
+  font-weight: bold;
+}
+.bottom-statistics .button {
+  height: 90px;
+  padding: 7.5px;
+}
+.bottom-statistics .button:hover {
+  background-color: @main-highlight-color;
+  cursor: pointer;
+}
 
 

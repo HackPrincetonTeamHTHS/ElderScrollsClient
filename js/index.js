@@ -12,11 +12,23 @@ $(document).ready(function() {
         $(".collapsable").toggleClass("collapsed");
         $(".container.navigation").css({"background-color":highlight}).animate(
            {"background-color":"#486480"},500);
+        $(this).queue(function( next ) {
+                // Do some stuff...
+                next();
+            });
     });
 
     $(".row.descrip").click(function() {
         var color = $(this).css("background-color");
         $(this).css({"background-color":highlight}).animate(
             {"background-color":color},500);
+        $(this).queue(function( next ) {
+                // Do some stuff...
+                next();
+            });;
+    })
+
+    $("#options-list > div").click(function() {
+        $(this).toggleClass("active");
     })
 });
