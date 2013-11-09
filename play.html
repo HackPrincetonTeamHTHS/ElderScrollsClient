@@ -3,6 +3,7 @@
 <head>
     <title></title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="js/jquery.knob.js"></script>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="css/main.css" />
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css' />
@@ -11,6 +12,7 @@
 <div id="play-content-wrapper">
     <div id="stat-pane" class="pane">
                 <div id="timer">
+                    <input type="text" value="5" class="time">
                 </div>
                 <div id="leaderboard">
                     <div class="player"><span class="name">Austin Eng</span>: <span class="score">35239452</span></div>
@@ -45,12 +47,12 @@
 
         }
 
-        var timer=$('#timer');
+        /*var timer=$('#timer');
         if ($(window).width()<767) {
             timer.css('height','100%').css('width',timer.height());
         } else {
             timer.css('width','100%').css('height',timer.width());
-        }
+        } */
     }
     var canBeCalled = true;
     function limitedSizeCanvas(){
@@ -60,6 +62,37 @@
         setTimeout(function(){
             canBeCalled = true;
         }, 80);
+    }
+
+    $(function() {
+        var startVal = parseFloat($('.time').attr('value'));
+        $(".time").knob({
+            width: 100,
+            height: 100,
+            'min':0,
+            'max': startVal,
+            readOnly: true,
+            step: 0.01,
+            fgColor: 'hsl(120, 100%, 80%)',
+            inputColor: 'hsl(120, 100%, 80%)',
+            font: 'Roboto'
+        });
+    });
+    var countdown = setInterval(function(){
+        var dial = $('.time');
+        var newtime = parseFloat(dial.val())-0.01;
+        var hue = newtime/parseFloat(dial.attr('value'))*120;
+        dial.val(newtime).trigger('change').trigger('configure', {
+            fgColor: 'hsl('+hue+', 100%, 80%)',
+            inputColor: 'hsl('+hue+', 100%, 80%)',
+        });
+        if (hue < 0) {
+            clearInterval(countdown);
+            timesUp();
+        }
+    }, 10);
+    function timesUp() {
+        console.log('Done!');
     }
 </script>
 </body>
