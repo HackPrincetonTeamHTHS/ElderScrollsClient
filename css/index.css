@@ -69,45 +69,83 @@
     margin-top:-3px;
 }
 
+
+/*=shadow stuff for navigation
+--------------------*/
 .collapsable#shadow {
     position:fixed;
     z-index:1;
     height:100%;
     width:100%;
+    visibility:hidden;
 
     transition: all 0.3s ease;
 }
 
 .collapsable#shadow.collapsed {
     background: rgba(0,0,0,0.3);
+    visibility:visible;
 }
 
-
+/*=row stuff container > .row.descrip. > .diff , .game-info > .game-title, .round-time
+--------------------*/
 
 .row.descrip {
     position:relative;
-    height:50px;
     color:#aaaaaa;
-    border-bottom:1px solid #dddddd;
+    background-image:url("../img/ic_action_next_item.png");
+    background-size:26px 26px;
+    background-repeat:no-repeat;
+    background-position:99% 17px;
 }
 
-.row.descrip:last-child{
-    border-bottom:0;
+.row.descrip:nth-child(odd) {
+    background-color:#f6f6f6;
 }
 
 .diff {
-    height:49px;
-    width:50px;
-    background:red;
+    height:60px;
+    width:60px;
 }
 
-.row.descrip:last-child .diff{
-    height:50px;
+.diff.easy {
+    background-color:#2ecc71;
 }
 
-.info {
+.diff.medium {
+    background-color:#f1c40f;
+}
+
+.diff.hard {
+    background-color:#e74c3c;
+}
+
+.descrip .game-info {
     position:absolute;
-    left:50px;
-    top:0;
+    left:70px;
+    top:5px;
 }
+
+.descrip .game-title {
+    font-size:16px;
+    line-height:16px;
+    color:#797979;
+}
+
+.descrip .player-count {
+    position:absolute;
+    top:20px;
+    font-size:12px;
+    line-height:12px;
+    color:#aaaaaa;
+}
+
+.descrip .game-time {
+    position:absolute;
+    top:36px;
+    font-size:12px;
+    line-height:12px;
+    color:#aaaaaa;
+}
+
 
