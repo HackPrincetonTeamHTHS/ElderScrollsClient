@@ -11,9 +11,9 @@ body {
 }
 .bottom-bar {
   position: fixed;
-  bottom: 0px;
+  top: 0px;
   width: 100%;
-  height: 45px;
+  height: 50px;
   background-color: #2ecc71;
 }
 .bottom-statistics {
@@ -23,7 +23,8 @@ body {
   height: 90px;
   background-color: #2ecc71;
 }
-.button {
+.button,
+.button-noclick {
   display: inline-block;
   vertical-align: text-top;
   float: left;
@@ -48,23 +49,26 @@ body {
   width: 150px;
   height: 225px;
   display: inline-block;
+  position: relative;
 }
 .card-caption {
   padding: 5px;
-  margin-bottom: 0px;
-  color: #FAFAFA;
-  position: relative;
+  position: absolute;
   bottom: 0;
+  color: #FAFAFA;
 }
 .icon {
-  height: 30px;
+  height: 35px;
   margin: 7.5px;
+}
+.icon-brand {
+  height: 50px;
 }
 .profile {
   height: 60px;
 }
 #play-bottom-bar {
-  height: 45px;
+  height: 50px;
   font-size: larger;
   font-weight: bold;
 }
@@ -114,8 +118,8 @@ body {
 }
 #play-content-wrapper {
   position: fixed;
-  bottom: 45px;
-  top: 0px;
+  bottom: 0px;
+  top: 50px;
   left: 0px;
   right: 0px;
   background-color: #e7e7e7;
