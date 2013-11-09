@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>End Round!</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="css/main.css" />
     <link href="css/index.css" rel="stylesheet">
 </head>
 <body>
-<div class="bottom-statistics" id="roundend-bottom-bar">
-    <div class="container" align="center">
-        <div class="row">
-            <div class="col-md-3 col-sm-3 col-xs-3">
-                <h1> Ranking </h1>
-                <h3 align="center">#1</h3>
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+</div>
+<div class="bottom-statistics" align="center" id="roundend-bottom-bar">
+    <div class="row">
+        <div class="col-md-4 col-sm-4 col-xs-4">
+            <h3> Ranking </h3>
+            <h3 align="center">#1</h3>
                 <!--
                 <p id="onload"> </p>
                 <script>
@@ -28,25 +31,31 @@
                     }
                 </script>
                 -->
-            </div>
-            <div class="col-md-3 col-sm-3 col-xs-3">
-                <h1> Score </h1>
-            </div>
-            <div class="col-md-3 col-sm-3 col-xs-3">
-                <h1> Time </h1>
-            </div>
-            <div  class="col-md-3 col-sm-3 col-xs-3" class="bottom-bar" id="roundend-bottom-bar">
-                <div class="button"><img class="icon" src="img/ic_navigation_drawer.png" /></div>
-            </div>
-        <!--
-            <div class="button"><img class="profile" src="img/ic_action_person.png" /> </div>
-            <div class="button"><img class="profile" src="img/ic_action_person.png" /> </div>
-            <div class="button"><img class="profile" src="img/ic_action_person.png" /> </div>
         </div>
-        -->
+        <div class="col-md-4 col-sm-4 col-xs-4">
+            <h3> Score </h3>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-4">
+            <h3> Time </h3>
+
+        </div>
+
     </div>
-
-
+</div>
 </body>
-
+<script>
+    var countdown = setInterval(function(){
+        var dial = $('.time');
+        var newtime = parseFloat(dial.val())-0.01;
+        dial.val(newtime).trigger('change').trigger('configure', {
+        });
+        if (hue < 0) {
+            clearInterval(countdown);
+            timesUp();
+        }
+    }, 10);
+    function timesUp() {
+        console.log('Done!');
+    }
+</script>
 </html>
