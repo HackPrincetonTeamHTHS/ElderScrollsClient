@@ -9,7 +9,6 @@
 body {
   color: #333333;
   font-family: 'Roboto', sans-serif;
-  overflow:hidden;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -82,7 +81,7 @@ a:hover {
   z-index:10;
   min-height:50px;
   height:50px;
-  background: #486480;
+  background: @main-color;
   border:none;
 }
 
@@ -231,9 +230,6 @@ a:hover {
   background-image: url("../img/ic_action_person.png");
 }
 
-#menu-watch-game {
-  background-image: url("../img/ic_action_good.png");
-}
 
 #menu-join-game {
   background-image: url("../img/ic_action_edit.png");
@@ -241,6 +237,10 @@ a:hover {
 
 #menu-create-game {
   background-image: url("../img/ic_action_new.png");
+}
+
+#menu-random-game {
+  background-image: url("../img/ic_action_help.png");
 }
 
 #menu-settings {
@@ -323,6 +323,18 @@ a:hover {
   }
 }
 
+#spinner {
+  position:absolute;
+  margin-left:30%;
+  top:100px;
+  -webkit-animation:spin 2s linear infinite;
+  -moz-animation:spin 2s linear infinite;
+  animation:spin 2s linear infinite;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
 .row.descrip {
   display:block;
   position:relative;
@@ -334,16 +346,6 @@ a:hover {
   cursor:pointer;
 }
 
-.row.descrip:before,
-.row.descrip:after {
-  content: ' ';
-  height: 0;
-  position: absolute;
-  width: 0;
-  border-top: 30px solid transparent;
-  border-right:30px solid black;
-  border-bottom:30px solid transparent;/* arrow size */
-}
 .row.descrip:nth-child(odd) {
   background-color:#ededed;
 }

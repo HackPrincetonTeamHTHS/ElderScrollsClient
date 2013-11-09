@@ -7,11 +7,11 @@
  */
 $(document).ready(function() {
 
-    var highlight = "rgb(73, 153, 255)";
+    var highlight = "#90a9ec";
     $(".container.navigation, #shadow").click(function() {
         $(".collapsable").toggleClass("collapsed");
         $(".container.navigation").css({"background-color":highlight}).animate(
-           {"background-color":"#486480"},500);
+           {"background-color":"#4575d4"},500);
         $(this).queue(function( next ) {
                 // Do some stuff...
                 next();
