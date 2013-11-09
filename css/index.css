@@ -186,6 +186,19 @@
     cursor:pointer;
 }
 
+#nav-back {
+    position:absolute;
+    display:inline;
+    border:none;
+    height:32px;
+    background: url("../img/ic_action_undo.png");
+    background-repeat:no-repeat;
+    background-size:20px 16px;
+    background-position:0px 7px;
+
+    transition: all 0.4s ease;
+}
+
 #nav-btn {
     position:absolute;
     display:inline;

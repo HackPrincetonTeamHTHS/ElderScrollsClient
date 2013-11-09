@@ -28,11 +28,25 @@ body {
 .down {
   background-color: #008709;
 }
-.container {
+.container.card-container {
   padding: 10px;
   margin-right: 5px;
   margin-left: 5px;
   margin-bottom: 5px;
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+.card {
+  background: #000000;
+  padding: 5px;
+  width: 120px;
+  height: 180px;
+  display: inline-block;
+}
+.card-caption {
+  padding: 5px;
+  margin-bottom: 0px;
+  color: #FAFAFA;
 }
 .icon {
   height: 30px;
