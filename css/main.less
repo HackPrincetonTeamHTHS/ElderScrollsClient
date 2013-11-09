@@ -15,17 +15,35 @@ body {
   height: 45px;
   background-color: @main-color;
 }
-
+.bottom-statistics {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  height: 90px;
+  background-color: @main-color;
+}
 .button {
   display: inline-block;
 }
-
+.container {
+  padding: 20px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
 .icon {
   height: 30px;
 }
 
+.profile {
+  height: 60px;
+}
+
 #play-bottom-bar .button {
   height: 45px;
+  padding: 7.5px;
+}
+#roundend-bottom-bar .button{
+  height: 90px;
   padding: 7.5px;
 }
 
@@ -74,8 +92,10 @@ body {
   background-color: #e7e7e7;
 }
 #timer {
-  background-color: red;
   display: inline-block;
+  width: 100px;
+  height: 100px;
+  margin: auto;
 }
 .player {
   display: block;
@@ -102,6 +122,10 @@ body {
   }
 }
 @media (min-width: 767px) {
+  #timer {
+    display: block;
+    margin-bottom: 30px;
+  }
   #stat-pane {
     display: inline-block;
     height: 100%;
