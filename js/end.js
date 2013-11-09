@@ -3,7 +3,7 @@ function nextRoundCountdown(startVal) {
     var downcount = setTimeout(function(){
         $('#next-round-timer').html(Math.round((parseFloat($('#next-round-timer').html())-.1)*100)/100);
         if (parseFloat($('#next-round-timer').html())<=0) {
-            alert('Next Round Beginning!');
+            console.log('Next Round Beginning!');
         } else {
             setTimeout(arguments.callee, 100);
         }
