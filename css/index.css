@@ -1,0 +1,113 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300);
+
+* {
+
+    font-family:Roboto;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.navbar,
+.navbar-inverse,
+.navbar-fixed-top {
+    z-index:10;
+    min-height:45px;
+    height:45px;
+    background: #8e44ad;
+    border:none;
+}
+
+#sliding-menu {
+    position:fixed;
+    z-index:100;
+    top:45px;
+    height:100%;
+    width:300px;
+    background:#222;
+
+    transition: all 0.4s ease;
+}
+
+#sliding-menu.collapsed {
+    width:0;
+}
+
+.container.navigation {
+    height:45px;
+    padding:0;
+    position:absolute;
+    cursor:pointer;
+}
+
+#nav-btn {
+    position:absolute;
+    display:inline;
+    border:none;
+    height:32px;
+    background: url("../img/ic_navigation_drawer.png");
+    background-repeat:no-repeat;
+    background-size:20px 16px;
+    background-position:0px 5px;
+
+    transition: all 0.4s ease;
+}
+
+#nav-btn.collapsed {
+    left:-7px;
+}
+
+.navbar-brand#username {
+    font-size:18px;
+    font-family:Roboto;
+    font-weight:300;
+    color:white;
+    margin-left:5px;
+    margin-top:-3px;
+}
+
+.collapsable#shadow {
+    position:fixed;
+    z-index:1;
+    height:100%;
+    width:100%;
+
+    transition: all 0.3s ease;
+}
+
+.collapsable#shadow.collapsed {
+    background: rgba(0,0,0,0.3);
+}
+
+
+
+.row.descrip {
+    position:relative;
+    height:50px;
+    color:#aaaaaa;
+    border-bottom:1px solid #dddddd;
+}
+
+.row.descrip:last-child{
+    border-bottom:0;
+}
+
+.diff {
+    height:49px;
+    width:50px;
+    background:red;
+}
+
+.row.descrip:last-child .diff{
+    height:50px;
+}
+
+.info {
+    position:absolute;
+    left:50px;
+    top:0;
+}
+
