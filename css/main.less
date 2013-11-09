@@ -3,6 +3,8 @@
 @main-button-press: #008709;
 @secondary-color: #FAFAFA;
 
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300);
+
 /*********************COMMON*************************/
 body {
   color: #333333;
@@ -16,6 +18,9 @@ body {
   user-select: none;
 }
 
+a:hover {
+  text-decoration: none;
+}
 /*****************NAV*******************/
 .bottom-bar {
   position: fixed;
@@ -190,12 +195,14 @@ body {
   position:absolute;
   bottom:0;
   top:121px;
-  width:100%;
+  width:300px;
   overflow-y:scroll;
+  overflow-x: hidden;
 
 }
 
-#options-list > div {
+#options-list > a {
+  display:block;
   height:60px;
   width:300px;
   border-bottom:1px solid rgba(100,100,100, 0.3);
@@ -212,8 +219,8 @@ body {
   background-repeat:no-repeat;
 }
 
-#options-list > div.active {
-  background-color: rgba(255,255,255,0.3);
+#options-list > a.active {
+  background-color: rgba(255,255,255,0.85);
 }
 
 #menu-profile {
@@ -313,14 +320,26 @@ body {
 }
 
 .row.descrip {
+  display:block;
   position:relative;
   color:#aaaaaa;
   background-image:url("../img/ic_action_next_item.png");
   background-size:26px 26px;
   background-repeat:no-repeat;
   background-position:99% 27px;
+  cursor:pointer;
 }
 
+.row.descrip:before,
+.row.descrip:after {
+  content: ' ';
+  height: 0;
+  position: absolute;
+  width: 0;
+  border-top: 30px solid transparent;
+  border-right:30px solid black;
+  border-bottom:30px solid transparent;/* arrow size */
+}
 .row.descrip:nth-child(odd) {
   background-color:#ededed;
 }

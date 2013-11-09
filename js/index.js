@@ -28,7 +28,7 @@ $(document).ready(function() {
             });;
     })
 
-    $("#options-list > div").click(function() {
+    $("#options-list > a").click(function() {
         $(this).toggleClass("active");
     })
 });
