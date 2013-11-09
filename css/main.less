@@ -1,4 +1,4 @@
-@main-color: #2ecc71;
+<!-- @main-color: #2ecc71; -->
 @main-highlight-color: #74d992;
 @main-button-press: #008709;
 @secondary-color: #FAFAFA;
@@ -14,6 +14,14 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+.content-wrapper {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 50px;
+  bottom: 0;
+  overflow-y: auto;
 }
 
 /*****************NAV*******************/
@@ -56,7 +64,7 @@ body {
   margin-right: 5px;
   margin-left: 5px;
   margin-bottom: 5px;
-  overflow-x: scroll;
+  overflow-y: scroll;
   white-space: nowrap;
 }
 .icon {
@@ -508,12 +516,17 @@ body {
 
 /***************ROUND END*********************/
 .card {
-  background: #000000;
-  padding: 5px;
-  width: 150px;
-  height: 225px;
+  background: #aaaaaa;
+  padding: 1%;
+  width: 30%;
+  //height: 225px;
   display: inline-block;
   position: relative;
+  margin: 7%;
+}
+.card img {
+  width: 100%;
+  height: auto;
 }
 .card-caption {
   padding: 5px;
@@ -536,4 +549,7 @@ body {
   cursor: pointer;
 }
 
+.stat-header {
+  margin-left: 5px;
+}
 
