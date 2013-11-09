@@ -141,19 +141,23 @@
 
 #options-list > div {
     height:60px;
-    width:250px;
-    margin-left: 35px!important;
+    width:300px;
     border-bottom:1px solid rgba(100,100,100, 0.3);
-    padding-left:45px;
+    padding-left:95px;
     padding-top:23px;
     font-size:14px;
     line-height:14px;
     color:white;
+    cursor:pointer;
 
 
     background-size:36px 36px;
-    background-position:0px 12px ;
+    background-position:45px 12px ;
     background-repeat:no-repeat;
+}
+
+#options-list > div.active {
+    background-color: rgba(255,255,255,0.3);
 }
 
 #menu-profile {
@@ -227,7 +231,8 @@
     margin-top:-52px;
 }
 
-
+/*=row stuff container > .row.descrip. > .diff , .game-info > .game-title, .round-time
+--------------------*/
 .container#main {
     width:100%;
 }
@@ -237,9 +242,6 @@
         padding-left:315px!important;
     }
 }
-
-/*=row stuff container > .row.descrip. > .diff , .game-info > .game-title, .round-time
---------------------*/
 
 .row.descrip {
     position:relative;
