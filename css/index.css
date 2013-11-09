@@ -15,19 +15,38 @@
 .navbar-inverse,
 .navbar-fixed-top {
     z-index:10;
-    min-height:45px;
-    height:45px;
-    background: #8e44ad;
+    min-height:50px;
+    height:50px;
+    background: #7f8c8d;
     border:none;
+}
+
+
+/*=shadow + sliding menu
+--------------------*/
+.collapsable#shadow {
+    position:fixed;
+    z-index:1;
+    height:100%;
+    width:100%;
+    visibility:hidden;
+
+    transition: all 0.3s ease;
+}
+
+.collapsable#shadow.collapsed {
+    background: rgba(0,0,0,0.3);
+    visibility:visible;
 }
 
 #sliding-menu {
     position:fixed;
     z-index:100;
-    top:45px;
+    top:50px;
     height:100%;
     width:300px;
-    background:#222;
+    background:rgba(30,30,30,0.95);
+    overflow:hidden;
 
     transition: all 0.4s ease;
 }
@@ -36,8 +55,78 @@
     width:0;
 }
 
+#sliding-menu * {
+    margin-left:0px;
+    white-space:nowrap;
+    transition: all 0.4s ease;
+
+}
+
+#sliding-menu.collapsed * {
+    margin-left:-100px;
+
+}
+
+@media(min-width:768px) {
+
+    .collapsable#shadow {
+        visibility:hidden!important;
+    }
+
+    #sliding-menu {
+        width:300px!important;
+
+    }
+
+    #sliding-menu * {
+        margin-left:0px!important;
+
+    }
+
+}
+
+#sliding-menu .prof-pic {
+    position:absolute;
+    top:10px;
+    left:10px;
+    height:100px;
+    width:100px;
+    border-radius:4px;
+    background:#eeeeee;
+}
+
+#sliding-menu .prof-name {
+    position:absolute;
+    top:24px;
+    left:120px;
+    color:white;
+    font-size:20px;
+    font-weight:300;
+    line-height:20px;
+}
+
+#sliding-menu .stat {
+    position:absolute;
+    left:120px;
+    color:white;
+    font-size:14px;
+    font-weight:300;
+    line-height:14px;
+}
+
+.stat.win {
+    top:54px;
+}
+
+.stat.loss {
+    top:79px;
+}
+
+
+/*=action bar
+--------------------*/
 .container.navigation {
-    height:45px;
+    height:50px;
     padding:0;
     position:absolute;
     cursor:pointer;
@@ -60,6 +149,12 @@
     left:-7px;
 }
 
+@media(min-width:768px) {
+    #nav-btn {
+        left:-7px!important;
+    }
+}
+
 .navbar-brand#username {
     font-size:18px;
     font-family:Roboto;
@@ -70,21 +165,14 @@
 }
 
 
-/*=shadow stuff for navigation
---------------------*/
-.collapsable#shadow {
-    position:fixed;
-    z-index:1;
-    height:100%;
+.container#main {
     width:100%;
-    visibility:hidden;
-
-    transition: all 0.3s ease;
 }
 
-.collapsable#shadow.collapsed {
-    background: rgba(0,0,0,0.3);
-    visibility:visible;
+@media(min-width:768px) {
+    .container#main {
+        padding-left:315px!important;
+    }
 }
 
 /*=row stuff container > .row.descrip. > .diff , .game-info > .game-title, .round-time
@@ -96,7 +184,7 @@
     background-image:url("../img/ic_action_next_item.png");
     background-size:26px 26px;
     background-repeat:no-repeat;
-    background-position:99% 17px;
+    background-position:99% 27px;
 }
 
 .row.descrip:nth-child(odd) {
@@ -104,8 +192,8 @@
 }
 
 .diff {
-    height:60px;
-    width:60px;
+    height:80px;
+    width:80px;
 }
 
 .diff.easy {
@@ -122,29 +210,29 @@
 
 .descrip .game-info {
     position:absolute;
-    left:70px;
-    top:5px;
+    left:92px;
+    top:7px;
 }
 
 .descrip .game-title {
-    font-size:16px;
-    line-height:16px;
+    font-size:19px;
+    line-height:19px;
     color:#797979;
 }
 
 .descrip .player-count {
     position:absolute;
-    top:20px;
-    font-size:12px;
-    line-height:12px;
+    top:33px;
+    font-size:14px;
+    line-height:14px;
     color:#aaaaaa;
 }
 
 .descrip .game-time {
     position:absolute;
-    top:36px;
-    font-size:12px;
-    line-height:12px;
+    top:50px;
+    font-size:14px;
+    line-height:14px;
     color:#aaaaaa;
 }
 
