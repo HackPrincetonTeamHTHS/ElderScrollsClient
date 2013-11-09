@@ -11,7 +11,7 @@ $(document).ready(function() {
     $(".container.navigation, #shadow").click(function() {
         $(".collapsable").toggleClass("collapsed");
         $(".container.navigation").css({"background-color":highlight}).animate(
-           {"background-color":"#7f8c8d"},500);
+           {"background-color":"#486480"},500);
     });
 
     $(".row.descrip").click(function() {
