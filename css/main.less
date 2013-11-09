@@ -16,20 +16,19 @@ body {
 }
 .bottom-statistics {
   position: fixed;
-  bottom: 0px;
   width: 100%;
+  top: 0px;
   height: 90px;
   background-color: @main-color;
+  padding: 10px;
+  margin-right: 5px;
+  margin-left: 5px;
+  margin-top: 5px;
 }
 .button {
   display: inline-block;
   vertical-align:text-top;
-}
-.container {
-  padding: 10px;
-  margin-right: 5px;
-  margin-left: 5px;
-  margin-bottom: 5px;
+
 }
 .icon {
   height: 30px;
@@ -46,20 +45,10 @@ body {
   font-weight: bold;
 }
 #roundend-bottom-bar {
-  font-weight: bold;
-}
-
-.bottom-statistics .button{
   height: 90px;
   padding: 7.5px;
-}
-.bottom-statistics .button:hover {
-  background-color: @main-highlight-color;
-  cursor: pointer;
-
-.bottom-bar .button:hover {
-  background-color: @main-highlight-color;
-  cursor: pointer;
+  font-size: larger;
+  font-weight: bold;
 }
 
 #canvas-wrapper {
@@ -94,12 +83,22 @@ body {
   padding: 15px;
   background-color: @secondary-color;
 }
+#img_rightalign {
+  display: inline-block;
+  text-align: right;
+}
+
 #stat-container {
   width: 100%;
 }
+
 #canvas-pane {
   height: 75%;
   background-color: #e7e7e7;
+}
+#play-bottom-bar .button:hover {
+  background-color: @main-highlight-color;
+  cursor: pointer;
 }
 #timer {
   display: inline-block;
