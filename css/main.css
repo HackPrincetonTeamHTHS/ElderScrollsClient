@@ -16,14 +16,22 @@ body {
   top: 0px;
   width: 100%;
   height: 50px;
+<<<<<<< HEAD
   background-color: #856fd7;
+=======
+  background-color: #4575d4;
+>>>>>>> 1b15bdae8386e6a0a22ec78d8592c6c996318d0f
 }
 .bottom-statistics {
   position: fixed;
   bottom: 0px;
   width: 100%;
   height: 90px;
+<<<<<<< HEAD
   background-color: #856fd7;
+=======
+  background-color: #4575d4;
+>>>>>>> 1b15bdae8386e6a0a22ec78d8592c6c996318d0f
 }
 .button,
 .button-noclick,
@@ -47,6 +55,17 @@ body {
   font-size: 18px;
   padding-right: 20px;
   color: white;
+<<<<<<< HEAD
+=======
+}
+.container.card-container {
+  padding: 10px;
+  margin-right: 5px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  overflow-x: scroll;
+  white-space: nowrap;
+>>>>>>> 1b15bdae8386e6a0a22ec78d8592c6c996318d0f
 }
 .icon {
   height: 35px;
@@ -454,6 +473,7 @@ body {
   margin-bottom: 5px;
 }
 .card {
+<<<<<<< HEAD
   background: white;
   padding: 10px;
   width: 30%;
@@ -464,6 +484,14 @@ body {
 .card img {
   width: 100%;
   height: auto;
+=======
+  background: #000000;
+  padding: 5px;
+  width: 150px;
+  height: 225px;
+  display: inline-block;
+  position: relative;
+>>>>>>> 1b15bdae8386e6a0a22ec78d8592c6c996318d0f
 }
 .card-caption {
   padding: 0;
