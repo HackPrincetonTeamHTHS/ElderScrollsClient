@@ -1,8 +1,8 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300);
 /*********************COMMON*************************/
 body {
   color: #333333;
   font-family: 'Roboto', sans-serif;
-  overflow: hidden;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -19,22 +19,14 @@ a:hover {
   top: 0px;
   width: 100%;
   height: 50px;
-<<<<<<< HEAD
-  background-color: #856fd7;
-=======
   background-color: #4575d4;
->>>>>>> 1b15bdae8386e6a0a22ec78d8592c6c996318d0f
 }
 .bottom-statistics {
   position: fixed;
   bottom: 0px;
   width: 100%;
   height: 90px;
-<<<<<<< HEAD
-  background-color: #856fd7;
-=======
   background-color: #4575d4;
->>>>>>> 1b15bdae8386e6a0a22ec78d8592c6c996318d0f
 }
 .button,
 .button-noclick,
@@ -58,8 +50,6 @@ a:hover {
   font-size: 18px;
   padding-right: 20px;
   color: white;
-<<<<<<< HEAD
-=======
 }
 .container.card-container {
   padding: 10px;
@@ -68,7 +58,6 @@ a:hover {
   margin-bottom: 5px;
   overflow-x: scroll;
   white-space: nowrap;
->>>>>>> 1b15bdae8386e6a0a22ec78d8592c6c996318d0f
 }
 .icon {
   height: 35px;
@@ -489,51 +478,19 @@ a:hover {
   }
 }
 /***************ROUND END*********************/
-.content-wrapper {
-  position: fixed;
-  left: 0px;
-  top: 50px;
-  right: 0px;
-  bottom: 90px;
-  overflow-y: auto;
-  background-color: #E4E4E4;
-}
-.card-container {
-  padding: 10px;
-  margin-right: 5px;
-  margin-left: 5px;
-  margin-bottom: 5px;
-}
 .card {
-<<<<<<< HEAD
-  background: white;
-  padding: 10px;
-  width: 30%;
-  margin: 6%;
-  display: inline-block;
-  position: relative;
-}
-.card img {
-  width: 100%;
-  height: auto;
-=======
   background: #000000;
   padding: 5px;
   width: 150px;
   height: 225px;
   display: inline-block;
   position: relative;
->>>>>>> 1b15bdae8386e6a0a22ec78d8592c6c996318d0f
 }
 .card-caption {
-  padding: 0;
+  padding: 5px;
   position: absolute;
   bottom: 0;
-  left: 0;
-  right: 0;
-  height: 25%;
   color: #FAFAFA;
-  background: #aaaaaa;
 }
 .profile {
   height: 60px;
@@ -548,11 +505,4 @@ a:hover {
 .bottom-statistics .button:hover {
   background-color: #90a9ec;
   cursor: pointer;
-}
-.stat-header {
-  color: #FAFAFA;
-  margin-left: 5px;
-  padding: 10px;
-  font-size: 30px;
-  display: inline-block;
 }
