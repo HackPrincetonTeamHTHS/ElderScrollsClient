@@ -7,7 +7,6 @@ body {
   font-family: 'Roboto', sans-serif;
   overflow:hidden;
 }
-
 .bottom-bar {
   position: fixed;
   bottom: 0px;
@@ -24,11 +23,13 @@ body {
 }
 .button {
   display: inline-block;
+  vertical-align:text-top;
 }
 .container {
-  padding: 20px;
+  padding: 10px;
   margin-right: 5px;
   margin-left: 5px;
+  margin-bottom: 5px;
 }
 .icon {
   height: 30px;
@@ -38,14 +39,23 @@ body {
   height: 60px;
 }
 
-#play-bottom-bar .button {
+#play-bottom-bar {
   height: 45px;
   padding: 7.5px;
+  font-size: larger;
+  font-weight: bold;
 }
-#roundend-bottom-bar .button{
+#roundend-bottom-bar {
+  font-weight: bold;
+}
+
+.bottom-statistics .button{
   height: 90px;
   padding: 7.5px;
 }
+.bottom-statistics .button:hover {
+  background-color: @main-highlight-color;
+  cursor: pointer;
 
 .bottom-bar .button:hover {
   background-color: @main-highlight-color;
