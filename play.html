@@ -4,11 +4,70 @@
     <title></title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="js/jquery.knob.js"></script>
+    <script src="js/easeljs-0.7.0.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="css/main.css" />
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css' />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+    <script type="text/javascript">
+        var canvas, stage;
+        var drawingCanvas;
+        var oldPt;
+        var oldMidPt;
+        var title;
+        var color;
+        var stroke;
+        var colors;
+        var index;
+        function init() {
+            canvas = document.getElementById("the-canvas");
+            index = 0;
+            stage = new createjs.Stage(canvas);
+            stage.autoClear = false;
+            createjs.Touch.enable(stage);
+            createjs.Ticker.setFPS(24);
+
+            color="#000000";
+            size = 1;
+
+            drawingCanvas = new createjs.Shape();
+
+            stage.addEventListener("stagemousedown", handleMouseDown);
+            stage.addEventListener("stagemouseup", handleMouseUp);
+
+            stage.addChild(drawingCanvas);
+        }
+        function stop() {}
+
+        function handleMouseDown(event) {
+            color = "#000";
+            stroke = 2;
+            oldPt = new createjs.Point(stage.mouseX, stage.mouseY);
+            oldMidPt = oldPt;
+            stage.addEventListener("stagemousemove" , handleMouseMove);
+        }
+        function handleMouseMove(event) {
+            var midPt = new createjs.Point(oldPt.x + stage.mouseX>>1, oldPt.y+stage.mouseY>>1);
+
+            drawingCanvas.graphics.clear().setStrokeStyle(stroke, 'round', 'round').beginStroke(color).moveTo(midPt.x, midPt.y).curveTo(oldPt.x, oldPt.y, oldMidPt.x, oldMidPt.y);
+
+            oldPt.x = stage.mouseX;
+            oldPt.y = stage.mouseY;
+
+            oldMidPt.x = midPt.x;
+            oldMidPt.y = midPt.y;
+
+            stage.update();
+        }
+
+        function handleMouseUp(event) {
+            stage.removeEventListener("stagemousemove" , handleMouseMove);
+        }
+
+    </script>
 </head>
-<body onLoad="sizeCanvas()" onResize="limitedSizeCanvas()">
+<body onLoad="sizeCanvas(), init()" onResize="limitedSizeCanvas()">
 <div id="play-content-wrapper">
     <div id="stat-pane" class="pane">
                 <div id="timer">
