@@ -7,10 +7,16 @@
  */
 $(document).ready(function() {
 
-    $(".container.navigation").click(function() {
+    var highlight = "rgb(73, 153, 255)";
+    $(".container.navigation, #shadow").click(function() {
         $(".collapsable").toggleClass("collapsed");
-        $(this).css({"background-color":"rgb(104, 173, 226)"}).animate(
+        $(".container.navigation").css({"background-color":highlight}).animate(
            {"background-color":"#8e44ad"},500);
     });
 
+    $(".row.descrip").click(function() {
+        var color = $(this).css("background-color");
+        $(this).css({"background-color":highlight}).animate(
+            {"background-color":color},500);
+    })
 });
