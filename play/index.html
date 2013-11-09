@@ -8,68 +8,9 @@
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="../css/main.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <script type="text/javascript">
-        var canvas, stage;
-        var drawingCanvas;
-        var oldPt;
-        var oldMidPt;
-        var title;
-        var color;
-        var stroke;
-        var colors;
-        var index;
-        var size=10;
-        var col='#000000';
-        function init() {
-            canvas = document.getElementById("the-canvas");
-            stage = new createjs.Stage(canvas);
-            stage.autoClear = false;
-            createjs.Touch.enable(stage);
-            createjs.Ticker.setFPS(24);
-
-            stage2 = new createjs.Stage(canvas);
-            stage2.autoClear = false;
-            var shape = new createjs.Shape();
-            shape.graphics.beginFill("#ffffff").drawRect(0, 0, 500, 500);
-            stage2.addChild(shape);
-            stage2.update();
-
-            drawingCanvas = new createjs.Shape();
-
-            stage.addEventListener("stagemousedown", handleMouseDown);
-            stage.addEventListener("stagemouseup", handleMouseUp);
-
-            stage.addChild(drawingCanvas);
-        }
-        function stop() {}
-
-        function handleMouseDown(event) {
-            color = col;
-            stroke = size;
-            oldPt = new createjs.Point(stage.mouseX, stage.mouseY);
-            oldMidPt = oldPt;
-            stage.addEventListener("stagemousemove" , handleMouseMove);
-        }
-        function handleMouseMove(event) {
-            var midPt = new createjs.Point(oldPt.x + stage.mouseX>>1, oldPt.y+stage.mouseY>>1);
-
-            drawingCanvas.graphics.clear().setStrokeStyle(stroke, 'round', 'round').beginStroke(color).moveTo(midPt.x, midPt.y).curveTo(oldPt.x, oldPt.y, oldMidPt.x, oldMidPt.y);
-
-            oldPt.x = stage.mouseX;
-            oldPt.y = stage.mouseY;
-
-            oldMidPt.x = midPt.x;
-            oldMidPt.y = midPt.y;
-
-            stage.update();
-        }
-
-        function handleMouseUp(event) {
-            stage.removeEventListener("stagemousemove" , handleMouseMove);
-        }
-    </script>
+    <script type="text/javascript" src="../js/canvas.js"></script>
 </head>
-<body onLoad="sizeCanvas(), init()" onResize="limitedSizeCanvas()">
+<body onLoad="sizeCanvas(); init()" onResize="limitedSizeCanvas()">
 <div class="bottom-bar" id="play-bottom-bar">
     <div class="button-noclick"><img class="icon-brand" src="../img/action-bar-icon.png" /></div>
     <div class="nav-title">Room Name</div>
@@ -92,7 +33,7 @@
     <div id="canvas-pane" class="pane">
         <div id="canvas-wrapper">
             <div id="canvas-content">
-                <canvas id="the-canvas" width="500px" height="500px">
+                <canvas id="the-canvas" width="300px" height="300px">
 
                 </canvas>
             </div>
@@ -102,34 +43,7 @@
         </div>
     </div>
 </div>
-<script>
-    function sizeCanvas() {
-        var container = $('#canvas-pane');
-        var containerRatio = container.width()/container.height();
-        var canvasWrapper = $('#canvas-wrapper');
-        if (containerRatio <= 1) {
-            canvasWrapper.css('width','100%').css('height','').css('top',(container.height()-canvasWrapper.height())/2);
-
-        }
-        if (containerRatio > 1) {
-            canvasWrapper.css('height','100%').css('width',canvasWrapper.height()).css('top','');
-
-        }
-
-        var canvas = $('#the-canvas');
-        canvas.css('transform','scale('+$('#canvas-content').width()/canvas.width()+')');
-
-    }
-    var canBeCalled = true;
-    function limitedSizeCanvas(){
-        if(!canBeCalled) return;
-        sizeCanvas();
-        canBeCalled = false;
-        setTimeout(function(){
-            canBeCalled = true;
-        }, 80);
-    }
-</script>
+<script src="../js/canvas-sizing.js"></script>
 <script src="../js/main.js"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-@main-color: #4575d4;
+@main-color: #856FD7;
 @main-highlight-color: #90a9ec;
 @main-button-press: #1a219e;
 @secondary-color: #FAFAFA;
@@ -32,7 +32,7 @@ a:hover {
   position: fixed;
   bottom: 0px;
   width: 100%;
-  height: 90px;
+  height: 50px;
   background-color: @main-color;
 }
 .button, .button-noclick, .nav-title {
@@ -57,14 +57,6 @@ a:hover {
   font-size: 18px;;
   padding-right: 20px;
   color: white;
-}
-.container.card-container{
-  padding: 10px;
-  margin-right: 5px;
-  margin-left: 5px;
-  margin-bottom: 5px;
-  overflow-x: scroll;
-  white-space: nowrap;
 }
 .icon {
   height: 35px;
@@ -533,20 +525,53 @@ a:hover {
 }
 
 /***************ROUND END*********************/
+.content-wrapper {
+  position: fixed;
+  left: 0px;
+  top: 50px;
+  right: 0px;
+  bottom: 50px;
+  overflow-y: auto;
+  background-color: #e7e7e7;
+}
+.card-container{
+  padding: 10px;
+  margin-right: 5px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+}
 .card {
-  background: #000000;
-  padding: 5px;
-  width: 150px;
-  height: 225px;
+  background: white;
+  padding: 10px;
+  width: 46%;
+  margin:2%;
+  float: left;
   display: inline-block;
   position: relative;
 }
+.card img {
+  width: 100%;
+  height: auto;
+}
 .card-caption {
-  padding: 5px;
   position: absolute;
   bottom: 0;
-  color: #FAFAFA;
+  left: 0;
+  right: 0;
+  height: 32%;
+  padding: 4% 7%;
+  color: #818181;
+  font-size: 17px;
+  background: rgba(245, 245, 245, 0.85);
+  overflow: hidden;
 }
+
+.card-desc {
+  font-size:13px;
+  color:#aaaaaa;
+  line-height: 16px;
+}
+
 .profile {
   height: 60px;
 }
@@ -554,7 +579,7 @@ a:hover {
   font-weight: bold;
 }
 .bottom-statistics .button {
-  height: 90px;
+  height: 50px;
   padding: 7.5px;
 }
 .bottom-statistics .button:hover {
@@ -562,4 +587,17 @@ a:hover {
   cursor: pointer;
 }
 
-
+.stat-header {
+  color: #FAFAFA;
+  line-height: 50px;
+  font-size: 16px;
+  display: inline-block;
+  padding-left:20px;
+  padding-right: 20px;
+}
+@media (min-width: 767px) {
+  .card {
+    width: 23%;
+    margin: 1%;
+  }
+}
