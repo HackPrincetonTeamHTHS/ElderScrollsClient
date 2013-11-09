@@ -20,12 +20,12 @@ $(document).ready(function(){
     });
 
     $('#edit-btn').click(function(){
-        size=6;
+        size=10;
         col='#000000';
     });
 
     $('#delete-btn').click(function(){
-        size=20;
+        size=30;
         col='#ffffff';
     });
 });
