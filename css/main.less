@@ -1,11 +1,13 @@
 @main-color: #2ecc71;
 @main-highlight-color: #6ccc89;
+@secondary-color: #F5F5F5;
 
 body {
   color: #333333;
   font-family: 'Roboto', sans-serif;
   overflow:hidden;
 }
+
 .bottom-bar {
   position: fixed;
   bottom: 0px;
@@ -79,23 +81,59 @@ body {
 }
 #stat-pane {
   height: 25%;
+  padding: 15px;
+  background-color: @secondary-color;
+}
+#stat-container {
+  width: 100%;
 }
 #canvas-pane {
   height: 75%;
   background-color: #e7e7e7;
 }
+#timer {
+  background-color: red;
+  display: inline-block;
+}
+.player {
+  display: block;
+  padding-bottom: 5%;
+}
+#timer-wrapper {
+  float: left;
+  width: 40%;
+  height: 100%;
+  display: inline-block;
+}
+#leaderboard {
+  display: inline-block;
+  vertical-align: top;
+}
 
+@media (max-width: 768px) {
+  #leaderboard {
+    height: 100%;
+    padding-left: 30px;
+  }
+  #stat-pane {
+    white-space: nowrap;
+  }
+}
 @media (min-width: 767px) {
   #stat-pane {
     display: inline-block;
     height: 100%;
-    width: 30%;
+    width: 20%;
     float: left;
   }
   #canvas-pane {
     display: inline-block;
     height: 100%;
-    width: 70%;
+    width: 80%;
     float: left;
+  }
+  #timer-wrapper {
+    width: 100%;
+    height: auto;
   }
 }
