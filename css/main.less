@@ -1,5 +1,6 @@
 @main-color: #2ecc71;
-@main-highlight-color: #6ccc89;
+@main-highlight-color: #74d992;
+@main-button-press: #008709;
 @secondary-color: #FAFAFA;
 
 body {
@@ -16,22 +17,31 @@ body {
 }
 .bottom-statistics {
   position: fixed;
+  bottom: 0px;
   width: 100%;
-  top: 0px;
   height: 90px;
   background-color: @main-color;
-  padding: 10px;
-  margin-right: 5px;
-  margin-left: 5px;
-  margin-top: 5px;
 }
 .button {
   display: inline-block;
   vertical-align:text-top;
-
+  float: left;
+}
+.bottom-bar .down:hover {
+  background-color: @main-button-press!important;
+}
+.down {
+  background-color: @main-button-press;
+}
+.container {
+  padding: 10px;
+  margin-right: 5px;
+  margin-left: 5px;
+  margin-bottom: 5px;
 }
 .icon {
   height: 30px;
+  margin: 7.5px;
 }
 
 .profile {
@@ -40,17 +50,26 @@ body {
 
 #play-bottom-bar {
   height: 45px;
-  padding: 7.5px;
+
   font-size: larger;
   font-weight: bold;
 }
 #roundend-bottom-bar {
-  height: 90px;
-  padding: 7.5px;
-  font-size: larger;
   font-weight: bold;
 }
 
+.bottom-statistics .button {
+  height: 90px;
+  padding: 7.5px;
+}
+.bottom-statistics .button:hover {
+  background-color: @main-highlight-color;
+  cursor: pointer;
+}
+.bottom-bar .button:hover {
+  background-color: @main-highlight-color;
+  cursor: pointer;
+}
 #canvas-wrapper {
   margin: auto;
   position: relative;
@@ -83,22 +102,13 @@ body {
   padding: 15px;
   background-color: @secondary-color;
 }
-#img_rightalign {
-  display: inline-block;
-  text-align: right;
-}
-
 #stat-container {
   width: 100%;
 }
-
 #canvas-pane {
   height: 75%;
   background-color: #e7e7e7;
-}
-#play-bottom-bar .button:hover {
-  background-color: @main-highlight-color;
-  cursor: pointer;
+  position: relative;
 }
 #timer {
   display: inline-block;
@@ -108,14 +118,16 @@ body {
 }
 .player {
   display: block;
-  padding-bottom: 5%;
+  padding-bottom: 8%;
 }
 .player .name {
-  font-size: 14px;
+  font-size: 18px;
+  display: inline-block;
   line-height: 100%;
 }
 .player .score {
-  font-size: 12px;
+  font-size: 14px;
+  display: inline-block;
   color: #838383;
 }
 #timer-wrapper {
@@ -131,8 +143,8 @@ body {
 #the-canvas {
   transform-origin:0 0;
   -webkit-transform-origin: 0 0;
-  width: 1000px;
-  height: 1000px;
+  width: 500px;
+  height: 500px;
 }
 
 @media (max-width: 768px) {
@@ -143,8 +155,20 @@ body {
   #stat-pane {
     white-space: nowrap;
   }
+  .score {
+    padding-left: 5px;
+  }
+  .score:before{
+    content:" (";
+  }
+  .score:after {
+    content:")";
+  }
 }
 @media (min-width: 767px) {
+  .player .score {
+    display: block;
+  }
   #timer {
     display: block;
     margin-bottom: 30px;
@@ -166,3 +190,5 @@ body {
     height: auto;
   }
 }
+
+

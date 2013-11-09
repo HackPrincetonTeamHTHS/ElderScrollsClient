@@ -3,10 +3,10 @@
 <head>
     <title></title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="js/jquery.knob.js"></script>
-    <script src="js/easeljs-0.7.0.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <script src="../js/jquery.knob.js"></script>
+    <script src="../js/easeljs-0.7.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../css/main.css" />
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css' />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 
@@ -20,16 +20,14 @@
         var stroke;
         var colors;
         var index;
+        var size=6;
+        var col='#000000';
         function init() {
             canvas = document.getElementById("the-canvas");
-            index = 0;
             stage = new createjs.Stage(canvas);
             stage.autoClear = false;
             createjs.Touch.enable(stage);
             createjs.Ticker.setFPS(24);
-
-            color="#000000";
-            size = 1;
 
             drawingCanvas = new createjs.Shape();
 
@@ -41,8 +39,8 @@
         function stop() {}
 
         function handleMouseDown(event) {
-            color = "#000";
-            stroke = 2;
+            color = col;
+            stroke = size;
             oldPt = new createjs.Point(stage.mouseX, stage.mouseY);
             oldMidPt = oldPt;
             stage.addEventListener("stagemousemove" , handleMouseMove);
@@ -83,7 +81,7 @@
     <div id="canvas-pane" class="pane">
         <div id="canvas-wrapper">
             <div id="canvas-content">
-                <canvas id="the-canvas">
+                <canvas id="the-canvas" width="500px" height="500px">
 
                 </canvas>
             </div>
@@ -91,10 +89,10 @@
     </div>
 </div>
 <div class="bottom-bar" id="play-bottom-bar">
-    <div class="button"><img class="icon" src="img/ic_action_edit.png" /></div>
-    <div class="button"><img class="icon" src="img/ic_action_discard.png" /></div>
-    <div class="button"><img class="icon" src="img/ic_action_undo.png" /></div>
-    <div class="button pull-right"><img class="icon" src="img/ic_action_cancel.png" /></div>
+    <div class="button down" id="edit-btn"><img class="icon" src="../img/ic_action_edit.png" /></div>
+    <div class="button" id="delete-btn"><img class="icon" src="../img/ic_action_discard.png" /></div>
+    <!--<div class="button"><img class="icon" src="img/ic_action_undo.png" /></div>-->
+    <div class="button pull-right"><a href="../"><img class="icon" src="../img/ic_action_cancel.png" /></a></div>
 </div>
 <script>
     function sizeCanvas() {
@@ -154,6 +152,20 @@
     function timesUp() {
         console.log('Done!');
     }
+    $('.button').click(function(){
+        if (!($(this).hasClass('down'))) {
+            $('.button').removeClass('down');
+            $(this).addClass('down');
+        }
+    });
+    $('#edit-btn').click(function(){
+        size=6;
+        col='#000000';
+    });
+    $('#delete-btn').click(function(){
+        size=20;
+        col='#ffffff';
+    });
 </script>
 </body>
 </html>
