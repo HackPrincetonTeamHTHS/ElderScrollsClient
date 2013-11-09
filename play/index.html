@@ -9,7 +9,6 @@
     <link rel="stylesheet" type="text/css" href="../css/main.css" />
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css' />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-
     <script type="text/javascript">
         var canvas, stage;
         var drawingCanvas;
@@ -20,7 +19,7 @@
         var stroke;
         var colors;
         var index;
-        var size=6;
+        var size=10;
         var col='#000000';
         function init() {
             canvas = document.getElementById("the-canvas");
@@ -62,14 +61,19 @@
         function handleMouseUp(event) {
             stage.removeEventListener("stagemousemove" , handleMouseMove);
         }
-
     </script>
 </head>
 <body onLoad="sizeCanvas(), init()" onResize="limitedSizeCanvas()">
+<div class="bottom-bar" id="play-bottom-bar">
+    <div class="button-noclick"><img class="icon-brand" src="../img/action-bar-icon.png" /></div>
+    <div class="button down" id="edit-btn"><img class="icon" src="../img/ic_action_edit.png" /></div>
+    <div class="button" id="delete-btn"><img class="icon" src="../img/ic_action_discard.png" /></div>
+    <div class="button pull-right"><a href="../"><img class="icon" src="../img/ic_action_back.png" /></a></div>
+</div>
 <div id="play-content-wrapper">
     <div id="stat-pane" class="pane">
                 <div id="timer">
-                    <input type="text" value="5" class="time">
+                    <input type="text" value="0" class="time">
                 </div>
                 <div id="leaderboard-wrapper">
                     <div class="player"><div class="name">Austin Eng</div><div class="score">35239452</div></div>
@@ -85,14 +89,11 @@
 
                 </canvas>
             </div>
+            <div id="preview-content">
+                <img id= "preview" src="" />
+            </div>
         </div>
     </div>
-</div>
-<div class="bottom-bar" id="play-bottom-bar">
-    <div class="button down" id="edit-btn"><img class="icon" src="../img/ic_action_edit.png" /></div>
-    <div class="button" id="delete-btn"><img class="icon" src="../img/ic_action_discard.png" /></div>
-    <!--<div class="button"><img class="icon" src="img/ic_action_undo.png" /></div>-->
-    <div class="button pull-right"><a href="../"><img class="icon" src="../img/ic_action_cancel.png" /></a></div>
 </div>
 <script>
     function sizeCanvas() {
@@ -121,51 +122,7 @@
             canBeCalled = true;
         }, 80);
     }
-
-    $(function() {
-        var startVal = parseFloat($('.time').attr('value'));
-        $(".time").knob({
-            width: 100,
-            height: 100,
-            'min':0,
-            'max': startVal,
-            readOnly: true,
-            step: 0.01,
-            fgColor: 'hsl(120, 100%, 80%)',
-            inputColor: 'hsl(120, 100%, 80%)',
-            font: 'Roboto'
-        });
-    });
-    var countdown = setInterval(function(){
-        var dial = $('.time');
-        var newtime = parseFloat(dial.val())-0.01;
-        var hue = newtime/parseFloat(dial.attr('value'))*120;
-        dial.val(newtime).trigger('change').trigger('configure', {
-            fgColor: 'hsl('+hue+', 100%, 80%)',
-            inputColor: 'hsl('+hue+', 100%, 80%)',
-        });
-        if (hue < 0) {
-            clearInterval(countdown);
-            timesUp();
-        }
-    }, 10);
-    function timesUp() {
-        console.log('Done!');
-    }
-    $('.button').click(function(){
-        if (!($(this).hasClass('down'))) {
-            $('.button').removeClass('down');
-            $(this).addClass('down');
-        }
-    });
-    $('#edit-btn').click(function(){
-        size=6;
-        col='#000000';
-    });
-    $('#delete-btn').click(function(){
-        size=20;
-        col='#ffffff';
-    });
 </script>
+<script src="../js/main.js"></script>
 </body>
 </html>
