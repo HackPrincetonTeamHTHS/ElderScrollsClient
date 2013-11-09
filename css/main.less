@@ -3,6 +3,7 @@
 @main-button-press: #008709;
 @secondary-color: #FAFAFA;
 
+/*********************COMMON*************************/
 body {
   color: #333333;
   font-family: 'Roboto', sans-serif;
@@ -14,6 +15,8 @@ body {
   -ms-user-select: none;
   user-select: none;
 }
+
+/*****************NAV*******************/
 .bottom-bar {
   position: fixed;
   top: 0px;
@@ -39,6 +42,16 @@ body {
 .down {
   background-color: @main-button-press;
 }
+.bottom-bar .button:hover {
+  background-color: @main-highlight-color;
+  cursor: pointer;
+}
+#play-bottom-bar {
+  height: 50px;
+
+  font-size: larger;
+  font-weight: bold;
+}
 .container.card-container{
   padding: 10px;
   margin-right: 5px;
@@ -47,57 +60,15 @@ body {
   overflow-x: scroll;
   white-space: nowrap;
 }
-
-.card {
-  background: #000000;
-  padding: 5px;
-  width: 250px;
-  height: 250px;
-  display: inline-block;
-  position: relative;
-}
-.card-caption {
-  padding: 5px;
-  position: absolute;
-  bottom: 0;
-  color: #FAFAFA;
-}
-
-
 .icon {
   height: 35px;
   margin: 7.5px;
 }
 .icon-brand {
   height: 50px;
- }
-
-.profile {
-  height: 60px;
 }
 
-#play-bottom-bar {
-  height: 50px;
-
-  font-size: larger;
-  font-weight: bold;
-}
-#roundend-bottom-bar {
-  font-weight: bold;
-}
-
-.bottom-statistics .button {
-  height: 90px;
-  padding: 7.5px;
-}
-.bottom-statistics .button:hover {
-  background-color: @main-highlight-color;
-  cursor: pointer;
-}
-.bottom-bar .button:hover {
-  background-color: @main-highlight-color;
-  cursor: pointer;
-}
+/*****************PLAY********************/
 #canvas-wrapper {
   margin: auto;
   position: relative;
@@ -232,5 +203,34 @@ body {
   }
 }
 
+/***************ROUND END*********************/
+.card {
+  background: #000000;
+  padding: 5px;
+  width: 150px;
+  height: 225px;
+  display: inline-block;
+  position: relative;
+}
+.card-caption {
+  padding: 5px;
+  position: absolute;
+  bottom: 0;
+  color: #FAFAFA;
+}
+.profile {
+  height: 60px;
+}
+#roundend-bottom-bar {
+  font-weight: bold;
+}
+.bottom-statistics .button {
+  height: 90px;
+  padding: 7.5px;
+}
+.bottom-statistics .button:hover {
+  background-color: @main-highlight-color;
+  cursor: pointer;
+}
 
 

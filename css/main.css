@@ -1,3 +1,4 @@
+/*********************COMMON*************************/
 body {
   color: #333333;
   font-family: 'Roboto', sans-serif;
@@ -9,6 +10,7 @@ body {
   -ms-user-select: none;
   user-select: none;
 }
+/*****************NAV*******************/
 .bottom-bar {
   position: fixed;
   top: 0px;
@@ -34,6 +36,15 @@ body {
 }
 .down {
   background-color: #008709;
+}
+.bottom-bar .button:hover {
+  background-color: #74d992;
+  cursor: pointer;
+}
+#play-bottom-bar {
+  height: 50px;
+  font-size: larger;
+  font-weight: bold;
 }
 .container.card-container {
   padding: 10px;
@@ -64,29 +75,7 @@ body {
 .icon-brand {
   height: 50px;
 }
-.profile {
-  height: 60px;
-}
-#play-bottom-bar {
-  height: 50px;
-  font-size: larger;
-  font-weight: bold;
-}
-#roundend-bottom-bar {
-  font-weight: bold;
-}
-.bottom-statistics .button {
-  height: 90px;
-  padding: 7.5px;
-}
-.bottom-statistics .button:hover {
-  background-color: #74d992;
-  cursor: pointer;
-}
-.bottom-bar .button:hover {
-  background-color: #74d992;
-  cursor: pointer;
-}
+/*****************PLAY********************/
 #canvas-wrapper {
   margin: auto;
   position: relative;
@@ -218,4 +207,33 @@ body {
     width: 100%;
     height: auto;
   }
+}
+/***************ROUND END*********************/
+.card {
+  background: #000000;
+  padding: 5px;
+  width: 150px;
+  height: 225px;
+  display: inline-block;
+  position: relative;
+}
+.card-caption {
+  padding: 5px;
+  position: absolute;
+  bottom: 0;
+  color: #FAFAFA;
+}
+.profile {
+  height: 60px;
+}
+#roundend-bottom-bar {
+  font-weight: bold;
+}
+.bottom-statistics .button {
+  height: 90px;
+  padding: 7.5px;
+}
+.bottom-statistics .button:hover {
+  background-color: #74d992;
+  cursor: pointer;
 }
