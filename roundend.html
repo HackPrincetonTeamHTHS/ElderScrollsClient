@@ -5,13 +5,33 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="css/main.css" />
-    <link href="css/index.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet" />
 </head>
 <body>
+<!-- NavBar -->
+    <div class="navbar navbar-inverse navbar-fixed-top ">
+        <div class="container navigation">
+            <div class="navbar-toggle collapsable" id="nav-back"></div>
+            <div id="navbar-icon"></div>
+            <a class="navbar-brand" id="username">Project Title</a>
+        </div>
+    </div>
+<!-- NavBar End -->
 
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
-
+<div class="card-container container" style="margin-top:50px">
+    <div class="card"><img src="img/ic_action_person.png" />
+        <div> 
+        </div>
+    </div>
+    <div class="card"><img src="img/ic_action_person.png" /> </div>
+    <div class="card"><img src="img/ic_action_person.png" /> </div>
+    <div class="card"><img src="img/ic_action_person.png" /> </div>
+    <div class="card"><img src="img/ic_action_person.png" /> </div>
+    <div class="card"><img src="img/ic_action_person.png" /> </div>
+    </div>
 </div>
+
+
 <div class="bottom-statistics" align="center" id="roundend-bottom-bar">
     <div class="row">
         <div class="col-md-4 col-sm-4 col-xs-4">
@@ -43,19 +63,5 @@
     </div>
 </div>
 </body>
-<script>
-    var countdown = setInterval(function(){
-        var dial = $('.time');
-        var newtime = parseFloat(dial.val())-0.01;
-        dial.val(newtime).trigger('change').trigger('configure', {
-        });
-        if (hue < 0) {
-            clearInterval(countdown);
-            timesUp();
-        }
-    }, 10);
-    function timesUp() {
-        console.log('Done!');
-    }
-</script>
+
 </html>
