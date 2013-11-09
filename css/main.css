@@ -43,25 +43,25 @@ body {
   white-space: nowrap;
 }
 .card {
-  background: #000000;
+  background: #AAAAAA;
   padding: 5px;
-  width: 150px;
-  height: 225px;
+  width: 250px;
+  height: 250px;
   display: inline-block;
+  position: relative;
 }
 .card-caption {
   padding: 5px;
-  margin-bottom: 0px;
-  color: #FAFAFA;
-  position: relative;
+  position: absolute;
   bottom: 0;
+  color: #FAFAFA;
 }
 .icon {
   height: 30px;
   margin: 7.5px;
 }
 .profile {
-  height: 60px;
+  height: 175px;
 }
 #play-bottom-bar {
   height: 45px;
