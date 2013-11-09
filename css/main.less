@@ -1,6 +1,6 @@
-<!-- @main-color: #2ecc71; -->
-@main-highlight-color: #74d992;
-@main-button-press: #008709;
+@main-color: #4575d4;
+@main-highlight-color: #90a9ec;
+@main-button-press: #1a219e;
 @secondary-color: #FAFAFA;
 
 /*********************COMMON*************************/
@@ -14,14 +14,6 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
-.content-wrapper {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 50px;
-  bottom: 0;
-  overflow-y: auto;
 }
 
 /*****************NAV*******************/
@@ -39,7 +31,7 @@ body {
   height: 90px;
   background-color: @main-color;
 }
-.button, .button-noclick {
+.button, .button-noclick, .nav-title {
   display: inline-block;
   vertical-align:text-top;
   float: left;
@@ -55,16 +47,19 @@ body {
   cursor: pointer;
 }
 #play-bottom-bar {
-  height: 50px;
-  font-size: larger;
-  font-weight: bold;
+}
+.nav-title {
+  line-height: 50px;
+  font-size: 18px;;
+  padding-right: 20px;
+  color: white;
 }
 .container.card-container{
   padding: 10px;
   margin-right: 5px;
   margin-left: 5px;
   margin-bottom: 5px;
-  overflow-y: scroll;
+  overflow-x: scroll;
   white-space: nowrap;
 }
 .icon {
@@ -72,6 +67,7 @@ body {
   margin: 7.5px;
 }
 .icon-brand {
+  margin-left: 15px;
   height: 50px;
 }
 
@@ -516,17 +512,12 @@ body {
 
 /***************ROUND END*********************/
 .card {
-  background: #aaaaaa;
-  padding: 1%;
-  width: 30%;
-  //height: 225px;
+  background: #000000;
+  padding: 5px;
+  width: 150px;
+  height: 225px;
   display: inline-block;
   position: relative;
-  margin: 7%;
-}
-.card img {
-  width: 100%;
-  height: auto;
 }
 .card-caption {
   padding: 5px;
@@ -549,7 +540,4 @@ body {
   cursor: pointer;
 }
 
-.stat-header {
-  margin-left: 5px;
-}
 
