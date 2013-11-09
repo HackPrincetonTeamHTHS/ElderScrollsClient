@@ -27,6 +27,13 @@
             createjs.Touch.enable(stage);
             createjs.Ticker.setFPS(24);
 
+            stage2 = new createjs.Stage(canvas);
+            stage2.autoClear = false;
+            var shape = new createjs.Shape();
+            shape.graphics.beginFill("#ffffff").drawRect(0, 0, 500, 500);
+            stage2.addChild(shape);
+            stage2.update();
+
             drawingCanvas = new createjs.Shape();
 
             stage.addEventListener("stagemousedown", handleMouseDown);
