@@ -19,16 +19,14 @@ $(document).ready(function() {
     });
 
     $(".row.descrip").click(function() {
-        var color = $(this).css("background-color");
+        var color = "#ededed"; //odd indices are white because the spinner offsets indices
+        if ($(this).is(":nth-child(even)"))
+            color = "#ffffff";
         $(this).css({"background-color":highlight}).animate(
             {"background-color":color},500);
         $(this).queue(function( next ) {
                 // Do some stuff...
                 next();
             });;
-    })
-
-    $("#options-list > a").click(function() {
-        $(this).toggleClass("active");
     })
 });

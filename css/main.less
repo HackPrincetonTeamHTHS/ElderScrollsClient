@@ -3,11 +3,12 @@
 @main-button-press: #1a219e;
 @secondary-color: #FAFAFA;
 
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300);
+
 /*********************COMMON*************************/
 body {
   color: #333333;
   font-family: 'Roboto', sans-serif;
-  overflow:hidden;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -16,6 +17,9 @@ body {
   user-select: none;
 }
 
+a:hover {
+  text-decoration: none;
+}
 /*****************NAV*******************/
 .bottom-bar {
   position: fixed;
@@ -69,7 +73,7 @@ body {
   z-index:10;
   min-height:50px;
   height:50px;
-  background: #486480;
+  background: @main-color;
   border:none;
 }
 
@@ -186,12 +190,14 @@ body {
   position:absolute;
   bottom:0;
   top:121px;
-  width:100%;
+  width:300px;
   overflow-y:scroll;
+  overflow-x: hidden;
 
 }
 
-#options-list > div {
+#options-list > a {
+  display:block;
   height:60px;
   width:300px;
   border-bottom:1px solid rgba(100,100,100, 0.3);
@@ -208,17 +214,14 @@ body {
   background-repeat:no-repeat;
 }
 
-#options-list > div.active {
-  background-color: rgba(255,255,255,0.3);
+#options-list > a.active {
+  background-color: rgba(255,255,255,0.85);
 }
 
 #menu-profile {
   background-image: url("../img/ic_action_person.png");
 }
 
-#menu-watch-game {
-  background-image: url("../img/ic_action_good.png");
-}
 
 #menu-join-game {
   background-image: url("../img/ic_action_edit.png");
@@ -226,6 +229,10 @@ body {
 
 #menu-create-game {
   background-image: url("../img/ic_action_new.png");
+}
+
+#menu-random-game {
+  background-image: url("../img/ic_action_help.png");
 }
 
 #menu-settings {
@@ -308,13 +315,28 @@ body {
   }
 }
 
+#spinner {
+  position:absolute;
+  margin-left:30%;
+  top:100px;
+  -webkit-animation:spin 2s linear infinite;
+  -moz-animation:spin 2s linear infinite;
+  animation:spin 2s linear infinite;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
 .row.descrip {
+  display:block;
   position:relative;
   color:#aaaaaa;
+  background-color:#ffffff;
   background-image:url("../img/ic_action_next_item.png");
   background-size:26px 26px;
   background-repeat:no-repeat;
   background-position:99% 27px;
+  cursor:pointer;
 }
 
 .row.descrip:nth-child(odd) {
