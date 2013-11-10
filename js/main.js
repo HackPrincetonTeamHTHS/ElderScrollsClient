@@ -56,7 +56,7 @@ function animateTimer(time, callback) {
 }
 
 function nextRoundCountdown(time,complete) {
-    $('#next-round-timer').html(time/1000);
+    $('#loading-bar').css('width',0);
     var start = new Date().getTime();
     var interval = setInterval(function() {
         var now = time-(new Date().getTime()-start);
@@ -64,15 +64,12 @@ function nextRoundCountdown(time,complete) {
             clearInterval(interval);
             complete();
         }
-        else updateMeter(now);
+        else updateMeter(now, time);
     },10);
 }
-function updateMeter(time) {
-    var newnum = (Math.round(time/100)/10).toString();
-    if (newnum.length==1) {
-        newnum=newnum+'.0';
-    }
-    $('#next-round-timer').html(newnum);
+function updateMeter(time, max) {
+    var pwidth = (1-time/max)*100+'%';
+    $('#loading-bar').css('width',pwidth);
 }
 
 var imagesource='http://businessnetworking.com/wp-content/uploads/2012/04/happy-face.jpg';
