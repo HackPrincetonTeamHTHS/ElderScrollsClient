@@ -68,7 +68,13 @@ function showPreview(img, time, callback) {
         });
     });
 }
+var gameStarted = false;
 function startGame(img, time1, time2) {
+    if (gameStarted) {
+        return;
+    }
+    gameStarted = true;
+
     var counter = $('.modal-stuff p');
     counter.html('3...');
     $('#countdown-modal').modal('show');
@@ -129,6 +135,7 @@ require(['../classes/' + 'Client'], function (Client) {
         window.client.onUpdate('running', function(isRunning) {
             if (isRunning) {
                 console.log("Room started");
+                startGame(imagesource, 1000, window.client.room.get('settings')['runTime']);
             }
         });
     });
