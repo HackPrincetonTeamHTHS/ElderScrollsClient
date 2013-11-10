@@ -56,6 +56,7 @@ require(['../classes/' + 'Client'], function (Client) {
     client.onReady(function () {
         var $roomListContainer = $('.the-room-listing').first();
         var $roomScoresContainer = $('#leaderboard-wrapper');
+        var $roomFinishContainer = $('.card-container').first();
 
         client.onUpdate('running', function (isRunning) {
             if (isRunning) {
@@ -67,6 +68,20 @@ require(['../classes/' + 'Client'], function (Client) {
                 var image = 'data:image/png;base64,' + client.room.get('currentImage')['image'];
                 currentGame = new Game(image, runTime, finishTime);
                 currentGame.start();
+            } else {
+                try {
+                    var roundStats = client.room.get('roundStats');
+                    console.log('roundStats', roundStats);
+
+                    $roomFinishContainer.html('');
+                    _.each(roundStats, function(item) {
+                        var html = _.template('<div class="card"><div align="center"><img class="profile" src="<%= drawingData %>"></div><div class="card-caption"><%= name %><div class="card-desc"><%= drawingScore %></div></div></div>', item);
+                        $(html).appendTo($roomFinishContainer);
+                    });
+                    currentGame.finish(roundStats);
+                } catch (e) {
+                    console.log(e);
+                }
             }
         });
 
@@ -124,6 +139,8 @@ require(['../classes/' + 'Client'], function (Client) {
             console.log(canvasData);
             client.me.set('drawingData', canvasData);
         }, 1000);
+
+
     });
 });
 
