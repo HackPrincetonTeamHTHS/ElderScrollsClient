@@ -60,7 +60,8 @@ require(['../classes/' + 'Client'], function (Client) {
                 stopCurrentGame();
                 var runTime = client.room.get('settings')['runTime'];
                 var finishTime = client.room.get('settings')['finishTime'];
-                currentGame = new Game(imagesource, runTime, finishTime);
+                var image = 'data:image/png;base64,' + client.room.get('currentImage')['image'];
+                currentGame = new Game(image, runTime, finishTime);
                 currentGame.start();
             }
         });
@@ -92,6 +93,12 @@ require(['../classes/' + 'Client'], function (Client) {
             joinRoom(client, roomId);
             e.preventDefault();
         });
+
+        setInterval(function() {
+            var canvasData = document.getElementById('the-canvas').toDataURL();
+            console.log(canvasData);
+            client.me.set('drawingData', canvasData);
+        }, 1000);
     });
 });
 
