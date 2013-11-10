@@ -78,4 +78,35 @@ function startGame(img, time1, time2) {
             console.log('done');
         });
     });
+    if (id == 'home-page') {
+        stopCurrentGame();
+        $('.page-wrapper').hide();
+        $('#countdown-modal').modal('hide');
+        $('#home-page').show();
+        $("#nav-btn").removeClass("hidden");
+        $("#play-nav > .button").addClass("hidden");
+    }
+    if (id == 'play-page') {
+        $("#nav-btn").addClass("hidden");
+        $("#play-nav > .button").removeClass("hidden");
+        $("#action-title").text("Game Name");
+        stage.clear();
+        init();
+        sizeCanvas();
+    }
+    if (id == 'end-page') {
+        $("#nav-btn").addClass("hidden");
+        $('#countdown-modal').modal('hide');
+        $("#action-title").text("Match Results");
+        $("#play-nav > .button:not(#back-btn)").addClass("hidden");
+        $("#back-btn").css({"display": "block!important"});
+
+    }
+    newp.css('z-index', '');
 }
+
+
+setTimeout(function () {
+    window.testgame2 = new Game(imagesource, 5000, 1000);
+//    testgame2.start();
+}, 1000);
