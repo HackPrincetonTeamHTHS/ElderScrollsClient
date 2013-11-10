@@ -46,123 +46,68 @@ $(document).ready(function () {
 
 });
 
+var imagesource='http://businessnetworking.com/wp-content/uploads/2012/04/happy-face.jpg';
 
-function animateTimer(time, callback) {
-    var max = time / 1000;
-    var dial = $('.time');
-
-    dial.trigger('configure', {
-        'min': 0,
-        'max': max
-    });
-
-    $({value: max}).animate({value: 0}, {
-        duration: time,
-        easing: 'linear',
-        step: function () {
-            var hue = this.value / max * 120;
-            dial.val(this.value).trigger('change').trigger('configure', {
-                fgColor: 'hsl(' + hue + ', 100%, 80%)',
-                inputColor: 'hsl(' + hue + ', 100%, 80%)'
-            });
-        },
-        complete: callback
-    });
-}
-
-function nextRoundCountdown(time, complete) {
-    $('#loading-bar').css('width', 0);
-    var start = new Date().getTime();
-    var interval = setInterval(function () {
-        var now = time - (new Date().getTime() - start);
-        if (now < 0) {
-            clearInterval(interval);
-            complete();
-        }
-        else updateMeter(now, time);
-    }, 10);
-}
-function updateMeter(time, max) {
-    var pwidth = (1 - time / max) * 100 + '%';
-    $('#loading-bar').css('width', pwidth);
-}
-
-var imagesource = 'http://businessnetworking.com/wp-content/uploads/2012/04/happy-face.jpg';
-function showPreview(img, time, callback) {
-    $('#preview').attr('src', img);
-    $('#preview-content').css('display', 'block');
-    animateTimer(time, function () {
-        $('#preview-content').fadeOut(100, function () {
-            $('#preview').attr('src', '');
-            callback();
-        });
-    });
-}
-
-function startGame(img, time1, time2) {
-
-    var counter = $('.modal-stuff p');
-    counter.html('3...');
-    $('#countdown-modal').modal('show');
-    setTimeout(function () {
-        counter.html('2...');
-    }, 1000);
-    setTimeout(function () {
-        counter.html('1...');
-    }, 2000);
-    setTimeout(function () {
-        counter.html('GO!');
-    }, 3000);
-    setTimeout(function () {
-        $('#countdown-modal').modal('hide');
-        showPreview(img, time1, function () {
-            animateTimer(time2, function () {
-                counter.html("Time's Up!");
-                $('#countdown-modal').modal('show');
-                var img = document.getElementById("the-canvas").toDataURL("image/png")//.replace("image/png", "image/octet-stream");
-                /*$.ajax({
-                 url: "/tcoeff",
-                 data: {"img":img},
-                 type: "post",
-                 success: function(d){
-                 $("#results").text(d);
-                 }
-                 });*/
-                redirectToResults();
-            });
-        });
-    }, 3500);
-}
-function redirectToResults() {
-    switchPage('end-page');
-    $('#countdown-modal').modal('hide');
-}
-
-/**
- * Determine the room to enter from the URL hash
- * @returns Number target room
- */
-function getTargetRoom() {
-    hash = window.location.hash
-    if (hash[0] == "#") {
-        return parseInt(hash.substr(1));
-    } else {
-        return -1;
-    }
-}
-
-var client;
+var client, currentGame;
 require(['../classes/' + 'Client'], function (Client) {
     client = new Client();
     client.onReady(function () {
+        var $roomListContainer = $('.the-room-listing').first();
+
         client.onUpdate('running', function (isRunning) {
             if (isRunning) {
                 console.log("Room started");
-                startGame(imagesource, 1000, client.room.get('settings')['runTime']);
+                stopCurrentGame();
+                var runTime = client.room.get('settings')['runTime'];
+                var finishTime = client.room.get('settings')['finishTime'];
+                currentGame = new Game(imagesource, runTime, finishTime);
+                currentGame.start();
             }
+        });
+
+        client.socket.on('roomSummary', function(data) {
+            // Filter out the lobby from the room listing
+            data = _.filter(data, function(item) {
+                return item['id'] != -1;
+            });
+
+            var difficultyMap = {
+                1: 'easy',
+                2: 'medium',
+                3: 'hard'
+            };
+
+            $roomListContainer.html("");
+            // Create each room element
+            _.each(data, function(item) {
+                item['difficultyString'] = difficultyMap[item['difficulty']];
+                var html = _.template('<a class="row descrip" data-room-id="<%= id %>" href="#"><div class="diff <%= difficultyString %>"></div><div class="game-info"><div class="game-title"><%= name %></div><div class="player-count"><%= playerCount %> players</div><div class="game-time"><%= runTime %> sec</div></div></a>', item);
+                $(html).appendTo($roomListContainer);
+            });
+        });
+
+        $roomListContainer.delegate('a.descrip', 'click', function(e) {
+            var roomId = $(e.target).attr('data-room-id');
+            console.log(roomId);
+            joinRoom(client, roomId);
+            e.preventDefault();
         });
     });
 });
+
+function joinRoom(client, id) {
+    client.me.changeRoom(id);
+}
+
+function leaveRoom(client) {
+    client.me.changeRoom(-1);
+}
+
+function stopCurrentGame() {
+    if (typeof currentGame !== 'undefined' && typeof currentGame.stop === 'function') {
+        currentGame.stop();
+    }
+}
 
 function switchPage(id) {
     var newp = $(document.getElementById(id));
@@ -173,6 +118,7 @@ function switchPage(id) {
         }
     });
     if (id == 'home-page') {
+        stopCurrentGame();
         $('.page-wrapper').hide();
         $('#countdown-modal').modal('hide');
         $('#home-page').show();
@@ -200,5 +146,5 @@ function switchPage(id) {
 
 setTimeout(function () {
     window.testgame2 = new Game(imagesource, 5000, 1000);
-    testgame2.start();
+//    testgame2.start();
 }, 1000);

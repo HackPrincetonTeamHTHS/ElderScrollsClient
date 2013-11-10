@@ -16,7 +16,8 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-
+    <script src="js/underscore-min.js"></script>
+    <script src="js/backbone-min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="js/jquery.knob.js"></script>
     <script src="js/easeljs-0.7.0.min.js"></script>
@@ -70,110 +71,7 @@
         </div>
     </div>
 
-
-    <div class="container collapsable" id="shadow"></div>
-    <div class="container" id="main" style="margin-top:50px;">
-
-        <img id="spinner" src="img/android-progress-spinner.png"/>
-
-        <a class="row descrip">
-            <div class="diff easy"></div>
-            <div class="game-info">
-                <div class="game-title">Andrew's Game</div>
-                <div class="player-count">8 players</div>
-                <div class="game-time">30 sec</div>
-            </div>
-        </a>
-        <a class="row descrip">
-            <div class="diff medium"></div>
-            <div class="game-info">
-                <div class="game-title">Austin's Game</div>
-                <div class="player-count">13 players</div>
-                <div class="game-time">15 sec</div>
-            </div>
-        </a>
-        <a class="row descrip">
-            <div class="diff hard"></div>
-            <div class="game-info">
-                <div class="game-title">Vincent's Game</div>
-                <div class="player-count">10 players</div>
-                <div class="game-time">20 sec</div>
-            </div>
-        </a>
-        <a class="row descrip">
-            <div class="diff easy"></div>
-            <div class="game-info">
-                <div class="game-title">Andrew's Game</div>
-                <div class="player-count">8 players</div>
-                <div class="game-time">30 sec</div>
-            </div>
-        </a>
-        <a class="row descrip">
-            <div class="diff medium"></div>
-            <div class="game-info">
-                <div class="game-title">Austin's Game</div>
-                <div class="player-count">13 players</div>
-                <div class="game-time">15 sec</div>
-            </div>
-        </a>
-        <a class="row descrip">
-            <div class="diff hard"></div>
-            <div class="game-info">
-                <div class="game-title">Vincent's Game</div>
-                <div class="player-count">10 players</div>
-                <div class="game-time">20 sec</div>
-            </div>
-        </a>
-
-        <a class="row descrip">
-            <div class="diff easy"></div>
-            <div class="game-info">
-                <div class="game-title">Andrew's Game</div>
-                <div class="player-count">8 players</div>
-                <div class="game-time">30 sec</div>
-            </div>
-        </a>
-        <a class="row descrip">
-            <div class="diff medium"></div>
-            <div class="game-info">
-                <div class="game-title">Austin's Game</div>
-                <div class="player-count">13 players</div>
-                <div class="game-time">15 sec</div>
-            </div>
-        </a>
-        <a class="row descrip">
-            <div class="diff hard"></div>
-            <div class="game-info">
-                <div class="game-title">Vincent's Game</div>
-                <div class="player-count">10 players</div>
-                <div class="game-time">20 sec</div>
-            </div>
-        </a>
-
-        <a class="row descrip">
-            <div class="diff easy"></div>
-            <div class="game-info">
-                <div class="game-title">Andrew's Game</div>
-                <div class="player-count">8 players</div>
-                <div class="game-time">30 sec</div>
-            </div>
-        </a>
-        <a class="row descrip">
-            <div class="diff medium"></div>
-            <div class="game-info">
-                <div class="game-title">Austin's Game</div>
-                <div class="player-count">13 players</div>
-                <div class="game-time">15 sec</div>
-            </div>
-        </a>
-        <a class="row descrip">
-            <div class="diff hard"></div>
-            <div class="game-info">
-                <div class="game-title">Vincent's Game</div>
-                <div class="player-count">10 players</div>
-                <div class="game-time">20 sec</div>
-            </div>
-        </a>
+    <div class="container the-room-listing" id="main" style="margin-top:50px;">
 
     </div>
 
