@@ -33,7 +33,7 @@ $(document).ready(function () {
         });
     });
 
-    $(".row.descrip").click(function () {
+    /*$(".row.descrip").click(function () {
         var color = "#ededed"; //odd indices are white because the spinner offsets indices
         if ($(this).is(":nth-child(even)"))
             color = "#ffffff";
@@ -44,7 +44,7 @@ $(document).ready(function () {
             next();
         });
         ;
-    })
+    })*/
 
     require(['classes/' + 'Client'], function (Client) {
         window.client = new Client();
