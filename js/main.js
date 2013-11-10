@@ -115,4 +115,27 @@ function redirectToResults() {
 }
 $('#countdown-modal').modal('show');
 
-startGame(imagesource, 1, 5);
+/**
+ * Determine the room to enter from the URL hash
+ * @returns Number target room
+ */
+function getTargetRoom() {
+    hash = window.location.hash
+    if (hash[0] == "#") {
+        return parseInt(hash.substr(1));
+    } else {
+        return -1;
+    }
+}
+
+require(['../classes/' + 'Client'], function (Client) {
+    window.client = new Client();
+    window.client.onReady(function() {
+        window.client.me.changeRoom(getTargetRoom());
+        window.client.onUpdate('running', function(isRunning) {
+            if (isRunning) {
+                console.log("Room started");
+            }
+        });
+    });
+});
