@@ -73,7 +73,7 @@ function showPreview(img, time, callback) {
     });
 }
 function startGame(img, time1, time2) {
-    var counter = $('#countdown-modal span');
+    var counter = $('.modal-stuff p');
     counter.html('3...');
     $('#countdown-modal').modal('show');
     setTimeout(function() {
@@ -111,6 +111,6 @@ function redirectToResults() {
         window.location = "../end/index.html";
     }, 3000);
 }
-$('#countdown-modal').modal('hide');
+$('#countdown-modal').modal('show');
 
 startGame(imagesource, 1, 5);

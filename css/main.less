@@ -482,7 +482,28 @@ a:hover {
 #countdown-modal {
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.75);
-  color: white;
+  color: #f3f3f3;
+
+  display: block;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  font-size: 50px;
+}
+.modal-wrap {
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+.modal-stuff {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+.modal-stuff p {
+  //background-color: rgba(0, 0, 0, 0.50);
 }
 #countdown-modal .modal-content {
   font-size: 50px;
