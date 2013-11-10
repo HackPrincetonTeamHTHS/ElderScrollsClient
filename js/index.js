@@ -1,10 +1,23 @@
 $(document).ready(function() {
 
+    /*$.ajax({
+        url:"/ajax/getcurrentgames",
+        type:"GET",
+        dataType: "json",
+        success: function(data) {
+
+            $.each(data, function(i, obj) {
+                $(".container#main").append('<a class="row descrip"><div class="diff medium"></div><div class="game-info"><div class="game-title">;lklk</div><div class="player-count">13 players</div><div class="game-time">15 sec </div></div></a>');
+            });
+        }
+
+    });*/
+
     var highlight = "#90a9ec";
     $(".container.navigation, #shadow").click(function() {
         $(".collapsable").toggleClass("collapsed");
         $(".container.navigation").css({"background-color":highlight}).animate(
-           {"background-color":"#4575d4"},500);
+           {"background-color":"#856FD7"},500);
         $(this).queue(function( next ) {
                 // Do some stuff...
                 next();
