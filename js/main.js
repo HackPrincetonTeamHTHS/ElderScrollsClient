@@ -40,11 +40,7 @@ $(document).ready(function(){
 
     $('#back-btn-menu').click(function() {
         if ($(this).css("display")=="block") {
-            $('.page-wrapper').hide();
-            $('#countdown-modal').modal('hide');
-            $('#home-page').show();
-            $("#nav-btn").removeClass("hidden");
-            $("#play-nav > .button").addClass("hidden");
+            switchPage('home-page');
         }
     });
 
@@ -156,18 +152,19 @@ function getTargetRoom() {
     }
 }
 
+var client;
 require(['../classes/' + 'Client'], function (Client) {
-    window.client = new Client();
-    window.client.onReady(function() {
-        window.client.me.changeRoom(getTargetRoom());
-        window.client.onUpdate('running', function(isRunning) {
+    client = new Client();
+    client.onReady(function() {
+        client.onUpdate('running', function(isRunning) {
             if (isRunning) {
                 console.log("Room started");
-                startGame(imagesource, 1000, window.client.room.get('settings')['runTime']);
+                startGame(imagesource, 1000, client.room.get('settings')['runTime']);
             }
         });
     });
 });
+
 function switchPage(id) {
     var newp = $(document.getElementById(id));
     newp.css('z-index',10).show();
@@ -176,11 +173,19 @@ function switchPage(id) {
             $(this).hide();
         }
     });
+    if (id=='home-page') {
+        $('.page-wrapper').hide();
+        $('#countdown-modal').modal('hide');
+        $('#home-page').show();
+        $("#nav-btn").removeClass("hidden");
+        $("#play-nav > .button").addClass("hidden");
+    }
     if (id=='play-page') {
         $("#nav-btn").addClass("hidden");
         $("#play-nav > .button").removeClass("hidden");
         $("#action-title").text("Game Name");
         stage.clear();
+        sizeCanvas();
         startGame(imagesource, 1000, 5000);
     }
     if (id=='end-page') {
@@ -196,5 +201,5 @@ function switchPage(id) {
     newp.css('z-index','');
 }
 
-startGame(imagesource, 1000, 1000);
+//startGame(imagesource, 1000, 1000);
 $('#countdown-modal').modal('hide');
