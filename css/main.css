@@ -19,30 +19,14 @@ a:hover {
   top: 0px;
   width: 100%;
   height: 50px;
-<<<<<<< HEAD
-<<<<<<< HEAD
-  background-color: #856fd7;
-=======
   background-color: #4575d4;
->>>>>>> 1b15bdae8386e6a0a22ec78d8592c6c996318d0f
-=======
-  background-color: #4575d4;
->>>>>>> 13fec3527ba22a9415e1a24cec8a0173d83142ee
 }
 .bottom-statistics {
   position: fixed;
   bottom: 0px;
   width: 100%;
   height: 90px;
-<<<<<<< HEAD
-<<<<<<< HEAD
-  background-color: #856fd7;
-=======
   background-color: #4575d4;
->>>>>>> 1b15bdae8386e6a0a22ec78d8592c6c996318d0f
-=======
-  background-color: #4575d4;
->>>>>>> 13fec3527ba22a9415e1a24cec8a0173d83142ee
 }
 .button,
 .button-noclick,
@@ -66,11 +50,6 @@ a:hover {
   font-size: 18px;
   padding-right: 20px;
   color: white;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 13fec3527ba22a9415e1a24cec8a0173d83142ee
 }
 .container.card-container {
   padding: 10px;
@@ -79,10 +58,6 @@ a:hover {
   margin-bottom: 5px;
   overflow-x: scroll;
   white-space: nowrap;
-<<<<<<< HEAD
->>>>>>> 1b15bdae8386e6a0a22ec78d8592c6c996318d0f
-=======
->>>>>>> 13fec3527ba22a9415e1a24cec8a0173d83142ee
 }
 .icon {
   height: 35px;
@@ -353,7 +328,7 @@ a:hover {
 .descrip .game-title {
   font-size: 19px;
   line-height: 19px;
-  color: #797979;
+  color: #5a5a5a;
 }
 .descrip .player-count {
   position: absolute;
@@ -504,31 +479,12 @@ a:hover {
 }
 /***************ROUND END*********************/
 .card {
-<<<<<<< HEAD
-<<<<<<< HEAD
-  background: white;
-  padding: 10px;
-  width: 30%;
-  margin: 6%;
-  display: inline-block;
-  position: relative;
-}
-.card img {
-  width: 100%;
-  height: auto;
-=======
-=======
->>>>>>> 13fec3527ba22a9415e1a24cec8a0173d83142ee
   background: #000000;
   padding: 5px;
   width: 150px;
   height: 225px;
   display: inline-block;
   position: relative;
-<<<<<<< HEAD
->>>>>>> 1b15bdae8386e6a0a22ec78d8592c6c996318d0f
-=======
->>>>>>> 13fec3527ba22a9415e1a24cec8a0173d83142ee
 }
 .card-caption {
   padding: 5px;
