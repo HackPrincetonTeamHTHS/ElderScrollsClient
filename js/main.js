@@ -53,6 +53,7 @@ var client, currentGame;
 var currentRoomId = -1;
 require(['../classes/' + 'Client'], function (Client) {
     client = new Client();
+    window.client = client;
     client.onReady(function () {
         var $roomListContainer = $('.the-room-listing').first();
         var $roomScoresContainer = $('#leaderboard-wrapper');
