@@ -1,10 +1,3 @@
-/**
- * Created with JetBrains PhpStorm.
- * User: andrewmillman
- * Date: 11/9/13
- * Time: 2:01 AM
- * To change this template use File | Settings | File Templates.
- */
 $(document).ready(function() {
 
     /*$.ajax({
@@ -41,5 +34,10 @@ $(document).ready(function() {
                 // Do some stuff...
                 next();
             });;
+    })
+
+    require(['classes/' + 'Client'], function(Client) {
+        window.client = new Client();
+
     })
 });

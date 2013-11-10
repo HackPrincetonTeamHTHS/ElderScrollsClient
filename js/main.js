@@ -37,6 +37,8 @@ function timesUp() {
 dial = $('.time');
 function startTimer(time, callback) {
     var hue=120;
+    var maxt = time;
+    var newtime = maxt;
     dial.val(time).attr('value', time).trigger('change').trigger('configure', {
         'min':0,
         'max': dial.attr('value')
@@ -47,8 +49,8 @@ function startTimer(time, callback) {
     });
 
     setTimeout(function(){
-        var newtime = parseFloat(dial.val())-0.01;
-        hue = newtime/parseFloat(dial.val())*120;
+        newtime = newtime-0.01;
+        hue = newtime/maxt*120;
         dial.val(newtime).attr('value', newtime).trigger('change').trigger('configure', {
             fgColor: 'hsl('+hue+', 100%, 80%)',
             inputColor: 'hsl('+hue+', 100%, 80%)'
@@ -73,9 +75,44 @@ function showPreview(img, time, callback) {
     });
 }
 function startGame(img, time1, time2) {
-    showPreview(img, time1, function() {
-        startTimer(time2, function() {
-            console.log('done');
+    var counter = $('.modal-stuff p');
+    counter.html('3...');
+    $('#countdown-modal').modal('show');
+    setTimeout(function() {
+        counter.html('2...');
+    }, 1000);
+    setTimeout(function() {
+        counter.html('1...');
+    }, 2000);
+    setTimeout(function() {
+        counter.html('GO!');
+    }, 3000);
+    setTimeout(function() {
+        $('#countdown-modal').modal('hide');
+        showPreview(img, time1, function() {
+            startTimer(time2, function() {
+                counter.html("Time's Up!");
+                $('#countdown-modal').modal('show');
+                var img = document.getElementById("the-canvas").toDataURL("image/png")//.replace("image/png", "image/octet-stream");
+                console.log(img);
+                /*$.ajax({
+                    url: "/tcoeff",
+                    data: {"img":img},
+                    type: "post",
+                    success: function(d){
+                        $("#results").text(d);
+                    }
+                });*/
+                redirectToResults();
+            });
         });
-    });
+    }, 3500);
 }
+function redirectToResults() {
+    setTimeout(function() {
+        window.location = "../end/index.html";
+    }, 3000);
+}
+$('#countdown-modal').modal('show');
+
+startGame(imagesource, 1, 5);
