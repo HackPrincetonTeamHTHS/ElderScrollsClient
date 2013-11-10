@@ -17,7 +17,7 @@ $(document).ready(function() {
     $(".container.navigation, #shadow").click(function() {
         $(".collapsable").toggleClass("collapsed");
         $(".container.navigation").css({"background-color":highlight}).animate(
-           {"background-color":"#4575d4"},500);
+           {"background-color":"#856FD7"},500);
         $(this).queue(function( next ) {
                 // Do some stuff...
                 next();
