@@ -131,7 +131,7 @@ function redirectToResults() {
         window.location = "../end/index.html";
     }, 3000);
 }
-$('#countdown-modal').modal('show');
+$('#countdown-modal').modal('hide');
 
 /**
  * Determine the room to enter from the URL hash

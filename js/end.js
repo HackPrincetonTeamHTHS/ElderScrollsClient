@@ -1,6 +1,6 @@
-nextRoundCountdown(5000, function(){
+/*nextRoundCountdown(5000, function(){
     window.location = "../play/index.html";
-});
+});*/
 
 function nextRoundCountdown(time,complete) {
     $('#next-round-timer').html(time/1000);
