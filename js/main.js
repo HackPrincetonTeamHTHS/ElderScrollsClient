@@ -73,10 +73,13 @@ require(['../classes/' + 'Client'], function (Client) {
                 try {
                     var roundStats = client.room.get('roundStats');
                     console.log('roundStats', roundStats);
+                    var template = '<div class="card"><div align="center"><img class="profile" src="<%= drawingData %>"></div><div class="card-caption"><%= name %><div class="card-desc"><%= drawingScore %></div></div></div>';
 
                     $roomFinishContainer.html('');
+                    var imageData = 'data:image/png;base64,' + client.room.get('currentImage')['image'];
+                    $(_.template(template, {drawingData: imageData, name: 'Original Image', drawingScore:''})).appendTo($roomFinishContainer);
                     _.each(roundStats, function(item) {
-                        var html = _.template('<div class="card"><div align="center"><img class="profile" src="<%= drawingData %>"></div><div class="card-caption"><%= name %><div class="card-desc"><%= drawingScore %></div></div></div>', item);
+                        var html = _.template(template, item);
                         $(html).appendTo($roomFinishContainer);
                     });
                     currentGame.finish(roundStats);
@@ -181,6 +184,7 @@ function switchPage(id) {
         $("#play-nav > .button").removeClass("hidden");
         $("#action-title").text("Game Name");
         stage.clear();
+        init();
         sizeCanvas();
     }
     if (id == 'end-page') {
