@@ -30,37 +30,31 @@ $(document).ready(function(){
     });
 });
 
-function timesUp() {
-    console.log('Done!');
-}
 
 dial = $('.time');
-function startTimer(time, callback) {
-    var hue=120;
-    var maxt = time;
-    var newtime = maxt;
-    dial.val(time).attr('value', time).trigger('change').trigger('configure', {
+function startTimer(time,complete) {
+    var maxt = time/1000;
+    var start = new Date().getTime();
+    dial.val(time/1000).attr('value', time/1000).trigger('change').trigger('configure', {
         'min':0,
-        'max': dial.attr('value')
+        'max': maxt
     });
-    dial.val(time).attr('value', time).trigger('change').trigger('configure', {
-        'min':0,
-        'max': dial.attr('value')
-    });
-
-    setTimeout(function(){
-        newtime = newtime-0.01;
-        hue = newtime/maxt*120;
-        dial.val(newtime).attr('value', newtime).trigger('change').trigger('configure', {
-            fgColor: 'hsl('+hue+', 100%, 80%)',
-            inputColor: 'hsl('+hue+', 100%, 80%)'
-        });
-        if (hue < 0) {
-            callback();
-        } else {
-            setTimeout(arguments.callee, 10);
+    var interval = setInterval(function() {
+        var now = time-(new Date().getTime()-start);
+        if( now < 0) {
+            clearInterval(interval);
+            complete();
         }
-    }, 10);
+        else updateDial(now, maxt*1000);
+    },10);
+}
+function updateDial(time, max) {
+    var hue = time/max*120;
+    console.log(hue);
+    dial.val(time/1000).attr('value', time/1000).trigger('change').trigger('configure', {
+        fgColor: 'hsl('+hue+', 100%, 80%)',
+        inputColor: 'hsl('+hue+', 100%, 80%)'
+    });
 }
 
 var imagesource='http://businessnetworking.com/wp-content/uploads/2012/04/happy-face.jpg';
@@ -115,4 +109,4 @@ function redirectToResults() {
 }
 $('#countdown-modal').modal('show');
 
-startGame(imagesource, 1, 5);
+startGame(imagesource, 1000, 5000);
