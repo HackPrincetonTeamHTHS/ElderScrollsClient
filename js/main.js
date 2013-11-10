@@ -169,8 +169,9 @@ function switchPage(id) {
             startGame(imagesource, 1000, 5000);
         }
         if (id=='end-page') {
+            $('#countdown-modal').modal('hide');
             nextRoundCountdown(3000, function() {
-                switchPage('play-page');
+                switchPage('play-page')
             });
         }
     });
