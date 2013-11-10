@@ -10,25 +10,21 @@ class Game
     @timeline[0] = () ->
       window.switchPage 'play-page'
       $('#countdown-modal').modal('show')
-      @setModalMessage '3...'
+      @setModalMessage 'Ready...'
     @timeline[1000] = () ->
-      @setModalMessage '2...'
-    @timeline[2000] = () ->
-      @setModalMessage '1...'
-    @timeline[3000] = () ->
-      @setModalMessage 'GO!'
-    @timeline[3500] = () ->
+      @setModalMessage 'Go!'
+    @timeline[1500] = () ->
       $('#countdown-modal').modal('hide')
       @flashPreview()
-    @timeline[3500 + 2000] = () ->
+    @timeline[1500 + 2000] = () ->
       @animateTimer @runTime
-    @timeline[3500 + 2000 + @runTime] = () ->
+    @timeline[1500 + 2000 + @runTime] = () ->
       $('#countdown-modal').modal('show')
       @setModalMessage 'Time\'s Up!'
-    @timeline[3500 + 2000 + @runTime + 1000] = () ->
+    @timeline[1500 + 2000 + @runTime + 500] = () ->
       window.switchPage 'end-page'
       @animateMeter @finishTime
-    @timeline[3500 + 2000 + @runTime + 1000 + @finishTime] = () ->
+    @timeline[1500 + 2000 + @runTime + 500 + @finishTime] = () ->
       @callback()
 
   setTimeout: (f, time) ->
@@ -64,12 +60,15 @@ class Game
 
   stop: () ->
     for timeoutId in @timeoutList
-      clearTimeout timeoutId
+      try clearTimeout timeoutId
+      catch e
     for intervalId in @intervalList
-      clearInterval intervalId
+      try clearInterval intervalId
+      catch e
     for animation in @animations
-      animation.stop()
-    window.switchPage('home-page')
+      try animation.stop()
+      catch e
+#    window.switchPage('home-page')
 
   flashPreview: (callback = () ->) ->
     $('#preview').attr('src', @image)
