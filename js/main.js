@@ -49,15 +49,18 @@ $(document).ready(function () {
 var imagesource='http://businessnetworking.com/wp-content/uploads/2012/04/happy-face.jpg';
 
 var client, currentGame;
+var currentRoomId = -1;
 require(['../classes/' + 'Client'], function (Client) {
     client = new Client();
     client.onReady(function () {
         var $roomListContainer = $('.the-room-listing').first();
+        var $roomScoresContainer = $('#leaderboard-wrapper');
 
         client.onUpdate('running', function (isRunning) {
             if (isRunning) {
                 console.log("Room started");
                 stopCurrentGame();
+                currentRoomId = client.room['id'];
                 var runTime = client.room.get('settings')['runTime'];
                 var finishTime = client.room.get('settings')['finishTime'];
                 var image = 'data:image/png;base64,' + client.room.get('currentImage')['image'];
@@ -74,19 +77,36 @@ require(['../classes/' + 'Client'], function (Client) {
                 return item['id'] != -1;
             });
 
-            var difficultyMap = {
-                1: 'easy',
-                2: 'medium',
-                3: 'hard'
-            };
+            // Update the room listing if the user is currently in the lobby
+            if (currentRoomId == -1) {
+                var difficultyMap = {
+                    1: 'easy',
+                    2: 'medium',
+                    3: 'hard'
+                };
 
-            $roomListContainer.html("");
-            // Create each room element
-            _.each(data, function(item) {
-                item['difficultyString'] = difficultyMap[item['difficulty']];
-                var html = _.template('<a class="row descrip" data-room-id="<%= id %>" href="#"><div class="diff <%= difficultyString %>"></div><div class="game-info"><div class="game-title"><%= name %></div><div class="player-count"><%= playerCount %> players</div><div class="game-time"><%= runTime %> sec</div></div></a>', item);
-                $(html).appendTo($roomListContainer);
-            });
+                $roomListContainer.html("");
+                // Create each room element
+                _.each(data, function(item) {
+                    item['difficultyString'] = difficultyMap[item['difficulty']];
+                    var html = _.template('<a class="row descrip" data-room-id="<%= id %>" href="#"><div class="diff <%= difficultyString %>"></div><div class="game-info"><div class="game-title"><%= name %></div><div class="player-count"><%= playerCount %> players</div><div class="game-time"><%= runTime %> sec</div></div></a>', item);
+                    $(html).appendTo($roomListContainer);
+                });
+            } else {
+                // Update the room scores if the user is currently in a room
+                data = _.find(data, function(item) {
+                    return item['id'] == currentRoomId;
+                });
+
+                $roomScoresContainer.html("");
+                // Create each score element
+                _.each(data.userScores, function(item) {
+                    var html = _.template('<div class="player"><div class="name"><%= name %></div><div class="score"><%= drawingScore %></div></div>', item);
+                    $(html).appendTo($roomScoresContainer);
+                })
+            }
+
+
         });
 
         $roomListContainer.delegate('a.descrip', 'click', function(e) {
@@ -116,6 +136,7 @@ function stopCurrentGame() {
     if (typeof currentGame !== 'undefined' && typeof currentGame.stop === 'function') {
         currentGame.stop();
     }
+    currentRoomId = -1;
 }
 
 function switchPage(id) {
