@@ -12,7 +12,7 @@ $(document).ready(function(){
         font: 'Roboto'
     });
 
-    $('.button').click(function(){
+    $('.button:not(#back-btn)').click(function(){
         if (!($(this).hasClass('down'))) {
             $('.button').removeClass('down');
             $(this).addClass('down');
@@ -28,6 +28,26 @@ $(document).ready(function(){
         size=25;
         col='#ffffff';
     });
+
+    $('#back-btn').click(function() {
+
+        if ($('#back-btn-menu').css("display")=="block") {
+            $('#back-btn-menu').css({"display":""});
+        }
+        else $('#back-btn-menu').css({"display":"block"});
+
+    });
+
+    $('#back-btn-menu').click(function() {
+        if ($(this).css("display")=="block") {
+            $('.page-wrapper').hide();
+            $('#countdown-modal').modal('hide');
+            $('#home-page').show();
+            $("#nav-btn").removeClass("hidden");
+            $("#play-nav > .button").addClass("hidden");
+        }
+    });
+
 });
 
 
@@ -88,6 +108,7 @@ function showPreview(img, time, callback) {
 }
 
 function startGame(img, time1, time2) {
+
     var counter = $('.modal-stuff p');
     counter.html('3...');
     $('#countdown-modal').modal('show');
@@ -159,11 +180,18 @@ function switchPage(id) {
         }
     });
     if (id=='play-page') {
+        $("#nav-btn").addClass("hidden");
+        $("#play-nav > .button").removeClass("hidden");
+        $("#action-title").text("Game Name");
         stage.clear();
         startGame(imagesource, 1000, 5000);
     }
     if (id=='end-page') {
+        $("#nav-btn").addClass("hidden");
         $('#countdown-modal').modal('hide');
+        $("#action-title").text("Match Results");
+        $("#play-nav > .button:not(#back-btn)").addClass("hidden");
+        $("#back-btn").css({"display":"block!important"});
         nextRoundCountdown(3000, function() {
             switchPage('play-page');
         });
@@ -172,3 +200,4 @@ function switchPage(id) {
 }
 
 startGame(imagesource, 1000, 1000);
+$('#countdown-modal').modal('hide');

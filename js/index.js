@@ -24,6 +24,15 @@ $(document).ready(function() {
             });
     });
 
+    $("#back-btn").click(function() {
+        $(this).css({"background-color":highlight}).animate(
+            {"background-color":"#856FD7"},500);
+        $(this).queue(function( next ) {
+            // Do some stuff...
+            next();
+        });
+    });
+
     $(".row.descrip").click(function() {
         var color = "#ededed"; //odd indices are white because the spinner offsets indices
         if ($(this).is(":nth-child(even)"))
