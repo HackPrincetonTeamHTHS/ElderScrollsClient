@@ -31,29 +31,27 @@ $(document).ready(function(){
 });
 
 
-dial = $('.time');
-function startTimer(time,complete) {
-    var maxt = time/1000;
-    var start = new Date().getTime();
-    dial.val(time/1000).attr('value', time/1000).trigger('change').trigger('configure', {
-        'min':0,
-        'max': maxt
+
+function animateTimer(time, callback) {
+    var max = time/1000;
+    var dial = $('.time');
+
+    dial.trigger('configure', {
+        'min': 0,
+        'max': max
     });
-    var interval = setInterval(function() {
-        var now = time-(new Date().getTime()-start);
-        if( now < 0) {
-            clearInterval(interval);
-            complete();
-        }
-        else updateDial(now, maxt*1000);
-    },10);
-}
-function updateDial(time, max) {
-    var hue = time/max*120;
-    console.log(hue);
-    dial.val(time/1000).attr('value', time/1000).trigger('change').trigger('configure', {
-        fgColor: 'hsl('+hue+', 100%, 80%)',
-        inputColor: 'hsl('+hue+', 100%, 80%)'
+
+    $({value: max}).animate({value: 0}, {
+        duration: time,
+        easing: 'linear',
+        step: function() {
+            var hue = this.value/max*120;
+            dial.val(this.value).trigger('change').trigger('configure', {
+                fgColor: 'hsl('+hue+', 100%, 80%)',
+                inputColor: 'hsl('+hue+', 100%, 80%)'
+            });
+        },
+        complete: callback
     });
 }
 
@@ -61,7 +59,7 @@ var imagesource='http://businessnetworking.com/wp-content/uploads/2012/04/happy-
 function showPreview(img, time, callback) {
     $('#preview').attr('src', img);
     $('#preview-content').css('display','block');
-    startTimer(time, function() {
+    animateTimer(time, function() {
         $('#preview-content').fadeOut(100, function() {
             $('#preview').attr('src', '');
             callback();
@@ -90,7 +88,7 @@ function startGame(img, time1, time2) {
     setTimeout(function() {
         $('#countdown-modal').modal('hide');
         showPreview(img, time1, function() {
-            startTimer(time2, function() {
+            animateTimer(time2, function() {
                 counter.html("Time's Up!");
                 $('#countdown-modal').modal('show');
                 var img = document.getElementById("the-canvas").toDataURL("image/png")//.replace("image/png", "image/octet-stream");
