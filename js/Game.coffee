@@ -99,8 +99,8 @@ class Game
         if (this.value/max <=0.25)
           hue=360
         dial.val(this.value).trigger('change').trigger 'configure', {
-          fgColor: 'hsl('+hue+', 100%, 50%)',
-          inputColor: 'hsl('+hue+', 100%, 50%)'
+          fgColor: 'hsl('+hue+', 100%, 70%)',
+          inputColor: 'hsl('+hue+', 100%, 70%)'
         }
       complete: callback
     }

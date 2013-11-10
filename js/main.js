@@ -128,6 +128,8 @@ require(['../classes/' + 'Client'], function (Client) {
         $roomListContainer.delegate('a.descrip', 'click', function(e) {
             var roomId = $(e.target).attr('data-room-id');
             console.log(roomId);
+            $('.modal-stuff p').html('Loading...');
+            $('#countdown-modal').modal('show');
             joinRoom(client, roomId);
             e.preventDefault();
         });
