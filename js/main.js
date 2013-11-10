@@ -37,6 +37,8 @@ function timesUp() {
 dial = $('.time');
 function startTimer(time, callback) {
     var hue=120;
+    var maxt = time;
+    var newtime = maxt;
     dial.val(time).attr('value', time).trigger('change').trigger('configure', {
         'min':0,
         'max': dial.attr('value')
@@ -47,8 +49,8 @@ function startTimer(time, callback) {
     });
 
     setTimeout(function(){
-        var newtime = parseFloat(dial.val())-0.01;
-        hue = newtime/parseFloat(dial.val())*120;
+        newtime = newtime-0.01;
+        hue = newtime/maxt*120;
         dial.val(newtime).attr('value', newtime).trigger('change').trigger('configure', {
             fgColor: 'hsl('+hue+', 100%, 80%)',
             inputColor: 'hsl('+hue+', 100%, 80%)'
