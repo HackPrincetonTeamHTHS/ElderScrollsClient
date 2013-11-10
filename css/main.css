@@ -3,12 +3,6 @@
 body {
   color: #333333;
   font-family: 'Roboto', sans-serif;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 a:hover {
   text-decoration: none;
@@ -19,14 +13,14 @@ a:hover {
   top: 0px;
   width: 100%;
   height: 50px;
-  background-color: #4575d4;
+  background-color: #856fd7;
 }
 .bottom-statistics {
   position: fixed;
   bottom: 0px;
   width: 100%;
-  height: 90px;
-  background-color: #4575d4;
+  height: 50px;
+  background-color: #856fd7;
 }
 .button,
 .button-noclick,
@@ -51,14 +45,6 @@ a:hover {
   padding-right: 20px;
   color: white;
 }
-.container.card-container {
-  padding: 10px;
-  margin-right: 5px;
-  margin-left: 5px;
-  margin-bottom: 5px;
-  overflow-x: scroll;
-  white-space: nowrap;
-}
 .icon {
   height: 35px;
   margin: 7.5px;
@@ -73,7 +59,7 @@ a:hover {
   z-index: 10;
   min-height: 50px;
   height: 50px;
-  background: #4575d4;
+  background: #856fd7;
   border: none;
 }
 /****************HOME********************/
@@ -88,7 +74,7 @@ a:hover {
   transition: all 0.3s ease;
 }
 .collapsable#shadow.collapsed {
-  background: rgba(0, 0, 0, 0.3);
+  /*background: rgba(0,0,0,0.3);*/
   visibility: visible;
 }
 #sliding-menu {
@@ -110,7 +96,7 @@ a:hover {
   transition: all 0.4s ease;
 }
 #sliding-menu.collapsed * {
-  margin-left: -100px;
+  /*margin-left:-100px;*/
 }
 @media (min-width: 768px) {
   .collapsable#shadow {
@@ -431,8 +417,39 @@ a:hover {
 #the-canvas {
   transform-origin: 0 0;
   -webkit-transform-origin: 0 0;
-  width: 500px;
-  height: 500px;
+  width: 300px;
+  height: 300px;
+}
+#countdown-modal {
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #f3f3f3;
+  display: block;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  font-size: 50px;
+}
+.modal-wrap {
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+.modal-stuff {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+#countdown-modal .modal-content {
+  font-size: 50px;
+  background: none;
+  box-shadow: none;
+  border: none;
+}
+#countdown-modal p {
+  text-align: center;
 }
 @media (max-width: 768px) {
   #leaderboard-wrapper {
@@ -478,19 +495,50 @@ a:hover {
   }
 }
 /***************ROUND END*********************/
+.content-wrapper {
+  position: fixed;
+  left: 0px;
+  top: 50px;
+  right: 0px;
+  bottom: 50px;
+  overflow-y: auto;
+  background-color: #e7e7e7;
+}
+.card-container {
+  padding: 10px;
+  margin-right: 5px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+}
 .card {
-  background: #000000;
-  padding: 5px;
-  width: 150px;
-  height: 225px;
+  background: white;
+  padding: 10px;
+  width: 46%;
+  margin: 2%;
+  float: left;
   display: inline-block;
   position: relative;
 }
+.card img {
+  width: 100%;
+  height: auto;
+}
 .card-caption {
-  padding: 5px;
   position: absolute;
   bottom: 0;
-  color: #FAFAFA;
+  left: 0;
+  right: 0;
+  height: 32%;
+  padding: 4% 7%;
+  color: #818181;
+  font-size: 17px;
+  background: rgba(245, 245, 245, 0.85);
+  overflow: hidden;
+}
+.card-desc {
+  font-size: 13px;
+  color: #aaaaaa;
+  line-height: 16px;
 }
 .profile {
   height: 60px;
@@ -499,10 +547,38 @@ a:hover {
   font-weight: bold;
 }
 .bottom-statistics .button {
-  height: 90px;
+  height: 50px;
   padding: 7.5px;
 }
 .bottom-statistics .button:hover {
   background-color: #90a9ec;
   cursor: pointer;
+}
+.stat-header {
+  color: #FAFAFA;
+  line-height: 50px;
+  font-size: 16px;
+  display: inline-block;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+@media (min-width: 767px) {
+  .card {
+    width: 23%;
+    margin: 1%;
+  }
+}
+#loading-bar-wrapper {
+  width: 20%;
+  height: 30px;
+  margin-top: 10px;
+  margin-right: 2%;
+  background-color: #e7e7e7;
+  border: 2px solid #e7e7e7;
+  padding: 0;
+}
+#loading-bar {
+  height: 100%;
+  background-color: #856fd7;
+  width: 0%;
 }
