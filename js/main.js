@@ -1,9 +1,9 @@
-$(document).ready(function(){
+$(document).ready(function () {
     var startVal = parseFloat($('.time').attr('value'));
     $(".time").knob({
         width: 100,
         height: 100,
-        'min':0,
+        'min': 0,
         'max': startVal,
         readOnly: true,
         step: 0.01,
@@ -12,34 +12,34 @@ $(document).ready(function(){
         font: 'Roboto'
     });
 
-    $('.button:not(#back-btn)').click(function(){
+    $('.button:not(#back-btn)').click(function () {
         if (!($(this).hasClass('down'))) {
             $('.button').removeClass('down');
             $(this).addClass('down');
         }
     });
 
-    $('#edit-btn').click(function(){
-        size=6;
-        col='#000000';
+    $('#edit-btn').click(function () {
+        size = 6;
+        col = '#000000';
     });
 
-    $('#delete-btn').click(function(){
-        size=25;
-        col='#ffffff';
+    $('#delete-btn').click(function () {
+        size = 25;
+        col = '#ffffff';
     });
 
-    $('#back-btn').click(function() {
+    $('#back-btn').click(function () {
 
-        if ($('#back-btn-menu').css("display")=="block") {
-            $('#back-btn-menu').css({"display":""});
+        if ($('#back-btn-menu').css("display") == "block") {
+            $('#back-btn-menu').css({"display": ""});
         }
-        else $('#back-btn-menu').css({"display":"block"});
+        else $('#back-btn-menu').css({"display": "block"});
 
     });
 
-    $('#back-btn-menu').click(function() {
-        if ($(this).css("display")=="block") {
+    $('#back-btn-menu').click(function () {
+        if ($(this).css("display") == "block") {
             switchPage('home-page');
         }
     });
@@ -47,9 +47,8 @@ $(document).ready(function(){
 });
 
 
-
 function animateTimer(time, callback) {
-    var max = time/1000;
+    var max = time / 1000;
     var dial = $('.time');
 
     dial.trigger('configure', {
@@ -60,40 +59,40 @@ function animateTimer(time, callback) {
     $({value: max}).animate({value: 0}, {
         duration: time,
         easing: 'linear',
-        step: function() {
-            var hue = this.value/max*120;
+        step: function () {
+            var hue = this.value / max * 120;
             dial.val(this.value).trigger('change').trigger('configure', {
-                fgColor: 'hsl('+hue+', 100%, 80%)',
-                inputColor: 'hsl('+hue+', 100%, 80%)'
+                fgColor: 'hsl(' + hue + ', 100%, 80%)',
+                inputColor: 'hsl(' + hue + ', 100%, 80%)'
             });
         },
         complete: callback
     });
 }
 
-function nextRoundCountdown(time,complete) {
-    $('#loading-bar').css('width',0);
+function nextRoundCountdown(time, complete) {
+    $('#loading-bar').css('width', 0);
     var start = new Date().getTime();
-    var interval = setInterval(function() {
-        var now = time-(new Date().getTime()-start);
-        if( now < 0) {
+    var interval = setInterval(function () {
+        var now = time - (new Date().getTime() - start);
+        if (now < 0) {
             clearInterval(interval);
             complete();
         }
         else updateMeter(now, time);
-    },10);
+    }, 10);
 }
 function updateMeter(time, max) {
-    var pwidth = (1-time/max)*100+'%';
-    $('#loading-bar').css('width',pwidth);
+    var pwidth = (1 - time / max) * 100 + '%';
+    $('#loading-bar').css('width', pwidth);
 }
 
-var imagesource='http://businessnetworking.com/wp-content/uploads/2012/04/happy-face.jpg';
+var imagesource = 'http://businessnetworking.com/wp-content/uploads/2012/04/happy-face.jpg';
 function showPreview(img, time, callback) {
     $('#preview').attr('src', img);
-    $('#preview-content').css('display','block');
-    animateTimer(time, function() {
-        $('#preview-content').fadeOut(100, function() {
+    $('#preview-content').css('display', 'block');
+    animateTimer(time, function () {
+        $('#preview-content').fadeOut(100, function () {
             $('#preview').attr('src', '');
             callback();
         });
@@ -105,19 +104,19 @@ function startGame(img, time1, time2) {
     var counter = $('.modal-stuff p');
     counter.html('3...');
     $('#countdown-modal').modal('show');
-    setTimeout(function() {
+    setTimeout(function () {
         counter.html('2...');
     }, 1000);
-    setTimeout(function() {
+    setTimeout(function () {
         counter.html('1...');
     }, 2000);
-    setTimeout(function() {
+    setTimeout(function () {
         counter.html('GO!');
     }, 3000);
-    setTimeout(function() {
+    setTimeout(function () {
         $('#countdown-modal').modal('hide');
-        showPreview(img, time1, function() {
-            animateTimer(time2, function() {
+        showPreview(img, time1, function () {
+            animateTimer(time2, function () {
                 counter.html("Time's Up!");
                 $('#countdown-modal').modal('show');
                 var img = document.getElementById("the-canvas").toDataURL("image/png")//.replace("image/png", "image/octet-stream");
@@ -155,8 +154,8 @@ function getTargetRoom() {
 var client;
 require(['../classes/' + 'Client'], function (Client) {
     client = new Client();
-    client.onReady(function() {
-        client.onUpdate('running', function(isRunning) {
+    client.onReady(function () {
+        client.onUpdate('running', function (isRunning) {
             if (isRunning) {
                 console.log("Room started");
                 startGame(imagesource, 1000, client.room.get('settings')['runTime']);
@@ -167,39 +166,39 @@ require(['../classes/' + 'Client'], function (Client) {
 
 function switchPage(id) {
     var newp = $(document.getElementById(id));
-    newp.css('z-index',10).show();
-    $('.page-wrapper').each(function() {
-        if($(this).attr('id')!=id) {
+    newp.css('z-index', 10).show();
+    $('.page-wrapper').each(function () {
+        if ($(this).attr('id') != id) {
             $(this).hide();
         }
     });
-    if (id=='home-page') {
+    if (id == 'home-page') {
         $('.page-wrapper').hide();
         $('#countdown-modal').modal('hide');
         $('#home-page').show();
         $("#nav-btn").removeClass("hidden");
         $("#play-nav > .button").addClass("hidden");
     }
-    if (id=='play-page') {
+    if (id == 'play-page') {
         $("#nav-btn").addClass("hidden");
         $("#play-nav > .button").removeClass("hidden");
         $("#action-title").text("Game Name");
         stage.clear();
         sizeCanvas();
     }
-    if (id=='end-page') {
+    if (id == 'end-page') {
         $("#nav-btn").addClass("hidden");
         $('#countdown-modal').modal('hide');
         $("#action-title").text("Match Results");
         $("#play-nav > .button:not(#back-btn)").addClass("hidden");
-        $("#back-btn").css({"display":"block!important"});
+        $("#back-btn").css({"display": "block!important"});
 
     }
-    newp.css('z-index','');
+    newp.css('z-index', '');
 }
 
 
-setTimeout(function() {
+setTimeout(function () {
     window.testgame2 = new Game(imagesource, 5000, 1000);
     testgame2.start();
 }, 1000);
