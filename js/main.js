@@ -128,7 +128,7 @@ function startGame(img, time1, time2) {
 }
 function redirectToResults() {
     setTimeout(function() {
-        window.location = "../end/index.html";
+        switchPage('end-page');
     }, 3000);
 }
 $('#countdown-modal').modal('hide');
@@ -164,6 +164,14 @@ function switchPage(id) {
     $('.page-wraper').each(function() {
         if($(this).attr('id')!=id) {
             $(this).hide();
+        }
+        if (id=='play-page') {
+            startGame(imagesource, 1000, 5000);
+        }
+        if (id=='end-page') {
+            nextRoundCountdown(3000, function() {
+                switchPage('play-page');
+            });
         }
     });
     newp.css('z-index','');
