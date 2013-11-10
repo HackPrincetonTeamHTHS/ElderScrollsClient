@@ -107,15 +107,14 @@ function startGame(img, time1, time2) {
                 counter.html("Time's Up!");
                 $('#countdown-modal').modal('show');
                 var img = document.getElementById("the-canvas").toDataURL("image/png")//.replace("image/png", "image/octet-stream");
-                console.log(img);
                 /*$.ajax({
-                    url: "/tcoeff",
-                    data: {"img":img},
-                    type: "post",
-                    success: function(d){
-                        $("#results").text(d);
-                    }
-                });*/
+                 url: "/tcoeff",
+                 data: {"img":img},
+                 type: "post",
+                 success: function(d){
+                 $("#results").text(d);
+                 }
+                 });*/
                 redirectToResults();
             });
         });
@@ -158,16 +157,16 @@ function switchPage(id) {
         if($(this).attr('id')!=id) {
             $(this).hide();
         }
-        if (id=='play-page') {
-            startGame(imagesource, 1000, 5000);
-        }
-        if (id=='end-page') {
-            $('#countdown-modal').modal('hide');
-            nextRoundCountdown(3000, function() {
-                switchPage('play-page')
-            });
-        }
     });
+    if (id=='play-page') {
+        startGame(imagesource, 1000, 5000);
+    }
+    if (id=='end-page') {
+        $('#countdown-modal').modal('hide');
+        nextRoundCountdown(3000, function() {
+            switchPage('play-page');
+        });
+    }
     newp.css('z-index','');
 }
 
