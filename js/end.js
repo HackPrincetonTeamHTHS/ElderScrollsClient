@@ -7,11 +7,11 @@ function nextRoundCountdown(startVal) {
         }
         $('#next-round-timer').html(newnum);
         if (parseFloat($('#next-round-timer').html())<=0) {
-            console.log('Next Round Beginning!');
+            window.location = "../play/index.html";
         } else {
             setTimeout(arguments.callee, 100);
         }
     }, 100);
 }
 
-nextRoundCountdown(10);
+nextRoundCountdown(5);
