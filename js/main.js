@@ -159,6 +159,7 @@ function switchPage(id) {
         }
     });
     if (id=='play-page') {
+        stage.clear();
         startGame(imagesource, 1000, 5000);
     }
     if (id=='end-page') {
