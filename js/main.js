@@ -67,6 +67,8 @@ require(['../classes/' + 'Client'], function (Client) {
         });
 
         client.socket.on('roomSummary', function(data) {
+            console.log(data);
+
             // Filter out the lobby from the room listing
             data = _.filter(data, function(item) {
                 return item['id'] != -1;
