@@ -21,11 +21,6 @@ class Game
     @timeline[1500 + 2000 + @runTime] = () ->
       $('#countdown-modal').modal('show')
       @setModalMessage 'Time\'s Up!'
-    @timeline[1500 + 2000 + @runTime + 500] = () ->
-      window.switchPage 'end-page'
-      @animateMeter @finishTime
-    @timeline[1500 + 2000 + @runTime + 500 + @finishTime] = () ->
-      @callback()
 
   setTimeout: (f, time) ->
     i = setTimeout(f, time)
@@ -54,6 +49,11 @@ class Game
       @setTimeout f2(f), time
 
     return true
+
+  finish: (callback = () ->) ->
+    window.switchPage 'end-page'
+    @animateMeter @finishTime
+    callback()
 
   updateScores: (scores) ->
     # TODO: updateScores()
