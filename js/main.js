@@ -86,13 +86,8 @@ function showPreview(img, time, callback) {
         });
     });
 }
-var gameStarted = false;
-function startGame(img, time1, time2) {
-    if (gameStarted) {
-        return;
-    }
-    gameStarted = true;
 
+function startGame(img, time1, time2) {
     var counter = $('.modal-stuff p');
     counter.html('3...');
     $('#countdown-modal').modal('show');
@@ -127,11 +122,9 @@ function startGame(img, time1, time2) {
     }, 3500);
 }
 function redirectToResults() {
-    setTimeout(function() {
-        switchPage('end-page');
-    }, 3000);
+    switchPage('end-page');
+    $('#countdown-modal').modal('hide');
 }
-$('#countdown-modal').modal('hide');
 
 /**
  * Determine the room to enter from the URL hash
@@ -161,7 +154,7 @@ require(['../classes/' + 'Client'], function (Client) {
 function switchPage(id) {
     var newp = $(document.getElementById(id));
     newp.css('z-index',10).show();
-    $('.page-wraper').each(function() {
+    $('.page-wrapper').each(function() {
         if($(this).attr('id')!=id) {
             $(this).hide();
         }
@@ -177,3 +170,5 @@ function switchPage(id) {
     });
     newp.css('z-index','');
 }
+
+startGame(imagesource, 1000, 1000);
