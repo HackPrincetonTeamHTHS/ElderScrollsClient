@@ -92,10 +92,15 @@ class Game
       duration: time,
       easing: 'linear',
       step: () ->
-        hue = 360 - (this.value/max*120);
+        if (this.value/max > 0.5)
+          hue=240
+        if (this.value/max < 0.5 && this.value/max >= 0.25)
+          hue = ((.5*max-this.value)/(.25*max))*120+240
+        if (this.value/max <=0.25)
+          hue=360
         dial.val(this.value).trigger('change').trigger 'configure', {
-          fgColor: 'hsl('+hue+', 100%, 80%)',
-          inputColor: 'hsl('+hue+', 100%, 80%)'
+          fgColor: 'hsl('+hue+', 100%, 50%)',
+          inputColor: 'hsl('+hue+', 100%, 50%)'
         }
       complete: callback
     }
