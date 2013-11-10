@@ -181,6 +181,7 @@ function switchPage(id) {
         $("#play-nav > .button").removeClass("hidden");
         $("#action-title").text("Game Name");
         stage.clear();
+        sizeCanvas();
         startGame(imagesource, 1000, 5000);
     }
     if (id=='end-page') {
