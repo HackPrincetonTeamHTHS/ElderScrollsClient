@@ -40,11 +40,7 @@ $(document).ready(function(){
 
     $('#back-btn-menu').click(function() {
         if ($(this).css("display")=="block") {
-            $('.page-wrapper').hide();
-            $('#countdown-modal').modal('hide');
-            $('#home-page').show();
-            $("#nav-btn").removeClass("hidden");
-            $("#play-nav > .button").addClass("hidden");
+            switchPage('home-page');
         }
     });
 
@@ -177,6 +173,13 @@ function switchPage(id) {
             $(this).hide();
         }
     });
+    if (id=='home-page') {
+        $('.page-wrapper').hide();
+        $('#countdown-modal').modal('hide');
+        $('#home-page').show();
+        $("#nav-btn").removeClass("hidden");
+        $("#play-nav > .button").addClass("hidden");
+    }
     if (id=='play-page') {
         $("#nav-btn").addClass("hidden");
         $("#play-nav > .button").removeClass("hidden");
