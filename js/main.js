@@ -40,6 +40,7 @@ $(document).ready(function () {
 
     $('#back-btn-menu').click(function () {
         if ($(this).css("display") == "block") {
+            stopCurrentGame();
             switchPage('home-page');
         }
     });
@@ -89,7 +90,7 @@ require(['../classes/' + 'Client'], function (Client) {
                 // Create each room element
                 _.each(data, function(item) {
                     item['difficultyString'] = difficultyMap[item['difficulty']];
-                    var html = _.template('<a class="row descrip" data-room-id="<%= id %>" href="#"><div class="diff <%= difficultyString %>"></div><div class="game-info"><div class="game-title"><%= name %></div><div class="player-count"><%= playerCount %> players</div><div class="game-time"><%= runTime %> sec</div></div></a>', item);
+                    var html = _.template('<a class="row descrip" data-room-id="<%= id %>" href="#"><div class="diff <%= difficultyString %>"></div><div class="game-info"><div class="game-title"><%= name %></div><div class="player-count"><%= playerCount %> players</div><div class="game-time"><%= runTime/1000 %> seconds per round</div></div></a>', item);
                     $(html).appendTo($roomListContainer);
                 });
             } else {
