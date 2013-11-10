@@ -1,17 +1,23 @@
-function nextRoundCountdown(startVal) {
-    $('#next-round-timer').html(startVal.toString());
-    var downcount = setTimeout(function(){
-        var newnum = (Math.round((parseFloat($('#next-round-timer').html())-.1)*100)/100).toString();
-        if (newnum.length==1) {
-            newnum=newnum+'.0';
-        }
-        $('#next-round-timer').html(newnum);
-        if (parseFloat($('#next-round-timer').html())<=0) {
-            window.location = "../play/index.html";
-        } else {
-            setTimeout(arguments.callee, 100);
-        }
-    }, 100);
-}
+nextRoundCountdown(5000, function(){
+    window.location = "../play/index.html";
+});
 
-nextRoundCountdown(5);
+function nextRoundCountdown(time,complete) {
+    $('#next-round-timer').html(time/1000);
+    var start = new Date().getTime();
+    var interval = setInterval(function() {
+        var now = time-(new Date().getTime()-start);
+        if( now < 0) {
+            clearInterval(interval);
+            complete();
+        }
+        else updateMeter(now);
+    },10);
+}
+function updateMeter(time) {
+    var newnum = (Math.round(time/100)/10).toString();
+    if (newnum.length==1) {
+        newnum=newnum+'.0';
+    }
+    $('#next-round-timer').html(newnum);
+}
