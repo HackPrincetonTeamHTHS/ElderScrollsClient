@@ -3,7 +3,7 @@
 @main-button-press: #938fff;
 @secondary-color: #FAFAFA;
 
-@import url(http://fonts.googleapis.com/css?family=Roboto:400,300);
+//@import url(http://fonts.googleapis.com/css?family=Roboto:400,300);
 
 /*********************COMMON*************************/
 body {
@@ -375,6 +375,7 @@ a:hover {
   height: 80px;
   width: 80px;
   opacity: 0.5;
+  float: left;
 }
 
 .diff.easy {
@@ -389,32 +390,20 @@ a:hover {
   background-color: #e74c3c;
 }
 
-.descrip .game-info {
-  position: absolute;
-  left: 92px;
-  top: 7px;
-}
-
-.descrip .game-title {
-  font-size: 19px;
-  line-height: 19px;
-  color: #5a5a5a;
-}
-
-.descrip .player-count {
-  position: absolute;
-  top: 28px;
-  font-size: 14px;
-  line-height: 14px;
-  color: #aaaaaa;
-}
-
-.descrip .game-time {
-  position: absolute;
-  top: 50px;
-  font-size: 14px;
-  line-height: 14px;
-  color: #aaaaaa;
+.descrip {
+  .game-info {
+    float: left;
+    padding: 10px;
+    line-height: 1.5em;
+  }
+  .game-title {
+    font-size: 19px;
+    color: #5a5a5a;
+  }
+  .game-time, .player-count {
+    font-size: 14px;
+    color: #aaaaaa;
+  }
 }
 
 /*****************PLAY********************/
