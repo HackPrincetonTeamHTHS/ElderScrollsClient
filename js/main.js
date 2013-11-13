@@ -51,6 +51,7 @@ var imagesource='http://businessnetworking.com/wp-content/uploads/2012/04/happy-
 
 var client, currentGame;
 var currentRoomId = -1;
+var currentGameTitle;
 require(['../classes/' + 'Client'], function (Client) {
     client = new Client();
     window.client = client;
@@ -132,6 +133,8 @@ require(['../classes/' + 'Client'], function (Client) {
         $roomListContainer.delegate('a.descrip', 'click', function(e) {
             var roomId = $(e.target).attr('data-room-id');
             console.log(roomId);
+            currentGameTitle = $(this).find(".game-title").text();
+            $("#action-title").text("Joining " + currentGameTitle + "...");
             $('.modal-stuff p').html('Loading...');
             $('#countdown-modal').modal('show');
             joinRoom(client, roomId);
@@ -182,7 +185,7 @@ function switchPage(id) {
     if (id == 'play-page') {
         $("#nav-btn").addClass("hidden");
         $("#play-nav > .button").removeClass("hidden");
-        $("#action-title").text("Game Name");
+        $("#action-title").text(currentGameTitle);
         stage.clear();
         init();
         sizeCanvas();
