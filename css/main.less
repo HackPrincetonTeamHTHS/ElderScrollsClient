@@ -3,7 +3,7 @@
 @main-button-press: #938fff;
 @secondary-color: #FAFAFA;
 
-//@import url(http://fonts.googleapis.com/css?family=Roboto:400,300);
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300);
 
 /*********************COMMON*************************/
 body {
@@ -72,12 +72,13 @@ a:hover {
 #back-btn-menu {
   display: none;
   position: fixed;
+  color:white;
   z-index: 300;
   top: 50px;
   right: 0;
   border: 1px solid @main-button-press;
   background-color: @main-highlight-color;
-  padding: 8px;
+  padding: 10px;
   cursor: pointer;
 }
 
@@ -155,33 +156,43 @@ a:hover {
 
 }
 
-#sliding-menu .prof-pic {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  height: 100px;
-  width: 100px;
-  border-radius: 4px;
-  background: #eeeeee;
-}
+#sliding-menu {
 
-#sliding-menu .prof-name {
-  position: absolute;
-  top: 24px;
-  left: 120px;
-  color: white;
-  font-size: 20px;
-  font-weight: 300;
-  line-height: 20px;
-}
+  .prof-block {
+    position:relative;
+    height: 100px;
+    border-bottom: 1px solid rgba(100, 100, 100, 0.5);
+    padding:10px;
+  }
 
-#sliding-menu .stat {
-  position: absolute;
-  left: 120px;
-  color: white;
-  font-size: 14px;
-  font-weight: 300;
-  line-height: 14px;
+  .prof-pic {
+    height:80px;
+    width:80px;
+    border-radius: 4px;
+    background: #eeeeee;
+  }
+
+  .prof-info {
+
+    position:absolute;
+    top:10px;
+    left:100px;
+
+    .prof-name {
+      color: white;
+      font-size: 20px;
+      font-weight: 300;
+      line-height: 28px;
+    }
+
+    .stat {
+      color: white;
+      font-size: 14px;
+      font-weight: 300;
+      line-height:25px;
+    }
+  }
+
 }
 
 .stat#win {
@@ -201,10 +212,7 @@ a:hover {
 }
 
 #options-list {
-  position: absolute;
-  bottom: 0;
-  top: 121px;
-  width: 300px;
+  width: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
 
@@ -227,8 +235,10 @@ a:hover {
   background-repeat: no-repeat;
 }
 
-#options-list > a.active {
-  background-color: rgba(255, 255, 255, 0.85);
+#options-list > a.active,
+#options-list > a:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  transition: all 0s;
 }
 
 #menu-profile {
@@ -293,7 +303,7 @@ a:hover {
 
 @media (min-width: 768px) {
   #nav-btn {
-    left: -7px !important;
+    left: -13px !important;
   }
 }
 
@@ -363,7 +373,7 @@ a:hover {
   background-image: url("../img/ic_action_next_item.png");
   background-size: 26px 26px;
   background-repeat: no-repeat;
-  background-position: 99% 27px;
+  background-position: 99% 28px;
   cursor: pointer;
 }
 
@@ -372,8 +382,8 @@ a:hover {
 }
 
 .diff {
-  height: 80px;
-  width: 80px;
+  height: 83px;
+  width: 83px;
   opacity: 0.5;
   float: left;
 }
@@ -394,7 +404,7 @@ a:hover {
   .game-info {
     float: left;
     padding: 10px;
-    line-height: 1.5em;
+    line-height: 21px;
   }
   .game-title {
     font-size: 19px;
@@ -520,7 +530,7 @@ a:hover {
 
   display: block;
   position: fixed;
-  z-index: 200;
+  z-index: 0;
   left: 0;
   top: 50px;
   right: 0;
@@ -558,6 +568,7 @@ a:hover {
 
 .modal-backdrop {
   margin-top: 50px;
+  z-index:0;
 }
 
 @media (max-width: 768px) {
@@ -661,6 +672,13 @@ a:hover {
   overflow: hidden;
   border-radius: 4px;
 }
+
+@media (max-width: 400px) {
+  .card-caption {
+    padding: 3% 5%;
+  }
+}
+
 
 .card-desc {
   font-size: 13px;
