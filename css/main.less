@@ -1,6 +1,6 @@
-@main-color: #16a085;
+@main-color: #00b491;
 @main-highlight-color: #90a9ec;
-@main-button-press: #1abc9c;
+@main-button-press: #00d1a8;
 @secondary-color: #FAFAFA;
 
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,300);
@@ -42,8 +42,12 @@ a:hover {
   display: inline-block;
   vertical-align: text-top;
   float: left;
-
 }
+
+#edit-btn, #delete-btn {
+  transition: all 0.5s ease;
+}
+
 
 .bottom-bar .down:hover {
   background-color: @main-button-press !important;
@@ -51,6 +55,7 @@ a:hover {
 
 .down {
   background-color: @main-button-press;
+  transition:0s!important;
 }
 
 .bottom-bar .button:hover {
@@ -251,7 +256,7 @@ a:hover {
 
 #options-list > a.active,
 #options-list > a:hover {
-  background-color: rgba(22, 160, 133, 0.4);
+  background-color: rgba(0, 180, 145, 0.4);
   transition: all 0s;
 }
 
