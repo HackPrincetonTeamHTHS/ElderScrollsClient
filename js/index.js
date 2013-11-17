@@ -13,7 +13,7 @@ $(document).ready(function () {
 
      });*/
 
-    var highlight = "#90a9ec";
+    var highlight = "#1abc9c";
     $(".container.navigation, #shadow").click(function () {
         $(".collapsable").toggleClass("collapsed");
         $(".container.navigation").css({"background-color": highlight}).animate(
