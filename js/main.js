@@ -134,7 +134,7 @@ require(['../classes/' + 'Client'], function (Client) {
             var roomId = $(e.target).attr('data-room-id');
             console.log(roomId);
             currentGameTitle = $(this).find(".game-title").text();
-            $("#action-title").text("Joining " + currentGameTitle + "...");
+            $("#action-title, title").text("Joining " + currentGameTitle + "...");
             $('.modal-stuff p').html('Loading...');
             $('#countdown-modal').modal('show');
             joinRoom(client, roomId);
@@ -181,11 +181,13 @@ function switchPage(id) {
         $('#home-page').show();
         $("#nav-btn").removeClass("hidden");
         $("#play-nav > .button").addClass("hidden");
+        $("#action-title").text("Join a Game");
+        $("title").text("QuickDraw");
     }
     if (id == 'play-page') {
         $("#nav-btn").addClass("hidden");
         $("#play-nav > .button").removeClass("hidden");
-        $("#action-title").text(currentGameTitle);
+        $("#action-title, title").text(currentGameTitle);
         stage.clear();
         init();
         sizeCanvas();
@@ -193,7 +195,7 @@ function switchPage(id) {
     if (id == 'end-page') {
         $("#nav-btn").addClass("hidden");
         $('#countdown-modal').modal('hide');
-        $("#action-title").text("Match Results");
+        $("#action-title, title").text("Match Results");
         $("#play-nav > .button:not(#back-btn)").addClass("hidden");
         $("#back-btn").css({"display": "block!important"});
 

@@ -13,11 +13,11 @@ $(document).ready(function () {
 
      });*/
 
-    var highlight = "#90a9ec";
+    var highlight = "#1abc9c";
     $(".container.navigation, #shadow").click(function () {
         $(".collapsable").toggleClass("collapsed");
         $(".container.navigation").css({"background-color": highlight}).animate(
-            {"background-color": "#856FD7"}, 500);
+            {"background-color": "#16a085"}, 500);
         $(this).queue(function (next) {
             // Do some stuff...
             next();
@@ -26,7 +26,7 @@ $(document).ready(function () {
 
     $("#back-btn").click(function () {
         $(this).css({"background-color": highlight}).animate(
-            {"background-color": "#856FD7"}, 500);
+            {"background-color": "#16a085"}, 500);
         $(this).queue(function (next) {
             // Do some stuff...
             next();

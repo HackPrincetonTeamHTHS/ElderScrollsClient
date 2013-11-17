@@ -1,6 +1,6 @@
-@main-color: #856FD7;
+@main-color: #16a085;
 @main-highlight-color: #90a9ec;
-@main-button-press: #938fff;
+@main-button-press: #1abc9c;
 @secondary-color: #FAFAFA;
 
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,300);
@@ -42,6 +42,7 @@ a:hover {
   display: inline-block;
   vertical-align: text-top;
   float: left;
+
 }
 
 .bottom-bar .down:hover {
@@ -76,8 +77,8 @@ a:hover {
   z-index: 300;
   top: 50px;
   right: 0;
-  border: 1px solid @main-button-press;
-  background-color: @main-highlight-color;
+  border: 1px solid @main-color;
+  background-color: @main-button-press;
   padding: 10px;
   cursor: pointer;
 }
@@ -116,8 +117,9 @@ a:hover {
   top: 50px;
   bottom: 0;
   width: 300px;
-  background: rgba(30, 30, 30, 0.95);
+  background: rgba(255, 255, 255, 0.95);
   overflow: hidden;
+  box-shadow:5px 0px 5px rgba(0,0,0,0.2);
 
   transition: all 0.4s ease;
 }
@@ -146,6 +148,8 @@ a:hover {
 
   #sliding-menu {
     width: 300px !important;
+    box-shadow:none;
+    border-right:1px solid #d5d5d5;
 
   }
 
@@ -161,7 +165,7 @@ a:hover {
   .prof-block {
     position:relative;
     height: 100px;
-    border-bottom: 1px solid rgba(100, 100, 100, 0.5);
+    border-bottom: 1px solid #d5d5d5;
     padding:10px;
   }
 
@@ -203,9 +207,27 @@ a:hover {
   top: 79px;
 }
 
+/*=fb login stuff
+--------------------
+.fb_iframe_widget {
+  width:100%;
+}
+
+.mvs {
+  position:absolute;
+  left:100px;
+}
+._s0._54ru.img {
+  height:80px;
+  width:80px;
+  border-radius:4px;
+}
+
+-----------------*/
+
 #options-list {
   width: 100%;
-  overflow-y: scroll;
+  overflow-y: hidden;
   overflow-x: hidden;
 
 }
@@ -214,12 +236,12 @@ a:hover {
   display: block;
   height: 60px;
   width: 300px;
-  border-bottom: 1px solid rgba(100, 100, 100, 0.3);
-  padding-left: 95px;
+  border-bottom: 1px solid #d5d5d5;
+  padding-left: 90px;
   padding-top: 23px;
   font-size: 14px;
   line-height: 14px;
-  color: white;
+  color: #6f6f6f;
   cursor: pointer;
 
   background-size: 36px 36px;
@@ -229,7 +251,7 @@ a:hover {
 
 #options-list > a.active,
 #options-list > a:hover {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(22, 160, 133, 0.4);
   transition: all 0s;
 }
 
@@ -238,7 +260,7 @@ a:hover {
 }
 
 #menu-join-game {
-  background-image: url("../img/ic_action_edit.png");
+  background-image: url("../img/ic_action_edit_dark.png");
 }
 
 #menu-create-game {
@@ -667,7 +689,8 @@ a:hover {
 
 @media (max-width: 400px) {
   .card-caption {
-    padding: 3% 5%;
+    padding: 0% 4%;
+    font-size:15px;
   }
 }
 
